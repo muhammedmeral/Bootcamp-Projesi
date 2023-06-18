@@ -48,10 +48,10 @@
 <p data-sourcepos="59:1-59:89" dir="auto"><a href="https://github.com/muhammedmeral/Bootcamp-Projesi/files/11782734/daily.docx">daily.docx</a></p>
 <p data-sourcepos="62:1-62:281" dir="auto"><strong>&Uuml;r&uuml;n Durumu:</strong>&nbsp;Bu sprintte unity &uuml;zerinde herhangi bir işlem yapılmasa da, assetlerin modellenmesi ve var olan modellerin optimize edilmesi, evlerin belirlenen krokiye g&ouml;re dizayn edilmesi gibi işlemler ger&ccedil;ekleştirilmiştir. Yapılan &ccedil;alışmaların ekran g&ouml;r&uuml;nt&uuml;leri:</p>
 
-![Render_2](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/2a63ec97-4d1a-4240-be4f-166dd02bd82f)
-![Render_1](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/81b3560c-c0b7-4aa2-b2e5-b99b2c9e9866)
-![Render_4](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/6c18d579-de15-4609-b118-36577acec7c6)
-![Render_6](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/81d3e900-715f-4c13-b327-b73821b2c7d3)
+![Render_6](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/5d4acabb-af91-44c9-8898-eb289ebef6b8)
+![Render_4](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/54c1ef88-78fd-4284-9259-55ce28d65b16)
+![Render_1](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/669c0356-2131-4062-ad8a-aa4bc0fbab37)
+![Render_2](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/ad44badf-ce97-44a1-9a02-12228320d0f6)
 
 <h2 dir="auto"><strong>Sprint Review</strong></h2>
 <ul dir="auto">
