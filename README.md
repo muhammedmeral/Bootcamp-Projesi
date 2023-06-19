@@ -52,6 +52,8 @@
 ![Render_4](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/54c1ef88-78fd-4284-9259-55ce28d65b16)
 ![Render_1](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/669c0356-2131-4062-ad8a-aa4bc0fbab37)
 ![Render_2](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/ad44badf-ce97-44a1-9a02-12228320d0f6)
+![1](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/14abb99e-e89c-40e4-96f2-1470e4c4a35f)
+![2](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/f052516a-2617-404f-8a7d-bd5557c96a82)
 
 <h2 dir="auto"><strong>Sprint Review</strong></h2>
 <ul dir="auto">
