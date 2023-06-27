@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2109045399450814467}
   - component: {fileID: 1186222716914350990}
   - component: {fileID: 720145394882267463}
+  - component: {fileID: 8572484106306988209}
   m_Layer: 0
   m_Name: Keyboard
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5426929878161639369}
-  m_LocalRotation: {x: -0.000000037748954, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.1118336, y: 0, z: -11.093675}
   m_LocalScale: {x: 0.25060353, y: 0.2506035, z: 0.25060353}
   m_ConstrainProportionsScale: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8572484106306988209
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426929878161639369}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9999999, y: 0.12145499, z: 0.6851239}
+  m_Center: {x: 0, y: 0.060502496, z: 0}
