@@ -39,7 +39,7 @@
 <p></p>
 <h3 dir="auto"><strong>Product Backlog&nbsp; URL:&nbsp;</strong><a href="https://trello.com/invite/b/XJ12s7Xr/ATTI2b0c143029be58c7c2541ea2985a79807AAE0110/1-sprint-yapilacaklar-li%CC%87stesi%CC%87" rel="nofollow">https://trello.com/invite/b/XJ12s7Xr/ATTI2b0c143029be58c7c2541ea2985a79807AAE0110/1-sprint-yapilacaklar-li̇stesi̇</a></h3>
 <p></p>
-<h2><strong>Sprint 1</strong></h2>
+<h1>Sprint 1</h1>
 <p><strong></strong></p>
 <p data-sourcepos="45:1-45:95" dir="auto"><strong>Sprint Notları:</strong>&nbsp;Toplantı notları ve puanlar backlogların itemlerin i&ccedil;ine yazılmıştır.</p>
 <p data-sourcepos="49:1-49:54" dir="auto"><strong>Sprint İ&ccedil;inde Tamamlanması Tahmin Edilen Puan:</strong>&nbsp;210</p>
@@ -65,8 +65,36 @@
 <h3 dir="auto"><strong>Sprint Retrospective</strong></h3>
 <ul dir="auto">
 <li>Ekip i&ccedil;i iletişim ve işbirliğinin daha da kuvvetlendirilmesi gerektiğine, bu doğrultuda, olağan toplantılar dışında haftanın bir g&uuml;n&uuml; ekip&ccedil;e bir online oyun oynamaya karar verildi.</li>
-<li>Yaratıcılık ve s&uuml;re&ccedil; planlaması konusunda t&uuml;m ekip &uuml;yelerinin s&uuml;rece dahil olması gerektiğine karar verildi.</li>
-<li>Sprint i&ccedil;indeki yoğunluğun ideal d&uuml;zeyin altında olduğu, sonraki sprintlerde bu durumun telafi edilmesi gerektiğine karar verildi.</li>
+
+ <h1>Sprint 2</h1>
+<p><strong>Sprint Notları:</strong> Sprint i&ccedil;inde yapılması planlanan g&ouml;revlerin tanımları backlogların i&ccedil;ine yazılmıştır.</p>
+<p><strong>Backlog URL:</strong>https://trello.com/b/VlZY2NZe/2sprint-yap%C4%B1lacak-i%CC%87%C5%9Fler</p>
+<p><strong>Sprint İ&ccedil;inde Tamamlanması Tahmin Edilen Puan:</strong>560</p>
+<p><strong>Puanlama Mantığı</strong>:Sprint i&ccedil;inde tamamlanması gereken 560 puan bulunmaktadır. Sprintin bayram d&ouml;nemine denk gelmesinden dolayı, g&ouml;revlerin b&uuml;y&uuml;k kısmı tamamlanamamıştır.</p>
+<p><strong>Daily Scrum</strong>: Ekip &uuml;yelerinin bir kısmı projeye zaman ayıramamıştır. Kalan &uuml;yeler ise, belirlenen iletişim kanalı aracılığı ile g&uuml;ncel ilerlemelerini yazılı olarak belirtmiştir.</p>
+<p><strong>Daily Scrum Text:</strong></p>[Daily.txt](https://github.com/muhammedmeral/Bootcamp-Projesi/files/11935835/Daily.txt)
+
+<p></p>
+<p><strong>&Uuml;r&uuml;n Durumu:</strong> İlk levelin haritası genel hatları ile tasarlanmış, karakter hareket kodları ve kamera takip kodları yapılmış, s&uuml;re ekranı ve yapısı tamamlanmıştır. Aray&uuml;z unsurlarının bir kısmı yapılmış olup, bir kısmı da konsept aşamasındadır.</p>
+<p>&Ccedil;alışmaların ekran g&ouml;r&uuml;nt&uuml;leri:</p>
+
+![1](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/be2ef912-7fca-448b-b6d3-2c2b694109ac)
+![3](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/d949de35-1a43-403d-b366-e32f23c7e838)
+![4](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/739fcf05-4984-4e00-8ac1-7c8bdd1e1af5)
+![5](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/799dd43d-9c71-4582-901a-e0428b199815)
+![6](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/fa484e5e-663b-45ec-9615-81f45905b233)
+
+<h3>Sprint Review</h3>
+<ul>
+<li>Sprint planlaması sıralı bi&ccedil;imde yapıldı.</li>
+<li>G&ouml;rev paylaşımı yapıldı.</li>
+<li>Harita tasarımı, UI bileşenlerinin tasarımı, hareket ve kamera sistemleri gibi başlangı&ccedil; g&ouml;revleri tamamlandı.</li>
+<li>G&ouml;revlerin b&uuml;y&uuml;k kısmı yapılamadı.</li>
 </ul>
-<h4 dir="auto"></h4>
-<h4 dir="auto"></h4>
+<h3>Sprint Retrospective</h3>
+<ul>
+<li>&Uuml;yelerin genel olarak projeye ayırdığı zamanın olduk&ccedil;a yetersiz olduğu, bu nedenle herkesin t&uuml;m enerjisini ve zamanını son sprinte ayırması gerektiğine,</li>
+<li>&Uuml;yeler arasındaki iletişimin yavaş ve zayıf olduğu, bu nedenle iletişim kanallarındaki bildirimlerin daha fazla dikkate alınması gerektiğine,</li>
+<li>UI Tasarımlarının alternatifsiz olduğuna, bu nedenle daha fazla alternatif konseptin olması gerektiğine,</li>
+<li>&Uuml;yelerin g&ouml;revleri tamamlama hızının d&uuml;ş&uuml;k olduğuna, bu nedenle yardımlaşmanın artırılıp, zaman y&ouml;netiminin bireysel ve ekip olarak iyileştirilmesine karar verildi.</li>
+
