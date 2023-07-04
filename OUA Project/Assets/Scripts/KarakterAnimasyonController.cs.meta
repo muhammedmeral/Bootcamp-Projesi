@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: e788e0b2692898d49a24e18d53acca17
+<<<<<<<< HEAD:OUA Project/Assets/Scripts/KarakterAnimasyonController.cs.meta
+guid: b308f20c69476594daa1529129d23b62
+========
+guid: ac1eb05af6d391b4eb0f4c070a99f1d0
+>>>>>>>> muhammed:OUA Project/Assets/TextMesh Pro/Examples & Extras/Scripts/DropdownSample.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

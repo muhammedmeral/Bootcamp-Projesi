@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6715326294071057425}
   - component: {fileID: 6800616342500352386}
   - component: {fileID: 1450102433169098876}
+  - component: {fileID: 2474568987189776208}
   m_Layer: 0
   m_Name: Candle
   m_TagString: Untagged
@@ -25,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8973637880034594625}
-  m_LocalRotation: {x: 2.7887342e-15, y: 1, z: 0.00000003774895, w: -0.0000000754979}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -9.959133, y: 0, z: -11.406079}
   m_LocalScale: {x: 2.0008497, y: 2.0008497, z: 2.0008497}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!33 &6800616342500352386
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4934664721000289348, guid: 0851ae67239794c41af654591a784d09, type: 3}
+  - {fileID: 2100000, guid: 349ea6a06e9970d47b8dcfec0ddb079f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2474568987189776208
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973637880034594625}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.056926116
+  m_Height: 0.21270132
+  m_Direction: 1
+  m_Center: {x: 0.015728898, y: 0.05262168, z: -0.070400015}

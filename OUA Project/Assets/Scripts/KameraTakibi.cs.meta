@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: df9a77f27c6e04148aac9c0ed4fe4482
+<<<<<<<< HEAD:OUA Project/Assets/Scripts/KameraTakibi.cs.meta
+guid: 317ff34a0eb7ad241ade96c2de5dc04f
+========
+guid: 0fa49650da675b04b985a4846367c01d
+>>>>>>>> muhammed:OUA Project/Assets/Scripts/zaman_sayaci.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
