@@ -11,11 +11,13 @@ public class zaman_sayaci : MonoBehaviour
     string ikiNokta = ":";
 
     public TextMeshProUGUI zamanSayaci;
+    
 
 
 
     private void Start()
     {
+        
 
         if (zamanSayaci!=null)
         {
