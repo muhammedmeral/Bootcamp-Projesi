@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 34651702241720497}
+  - component: {fileID: 3770315142537716091}
   m_Layer: 0
   m_Name: Antlers
   m_TagString: Untagged
@@ -108,14 +109,27 @@ Transform:
   m_GameObject: {fileID: 8301478652636678857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.91, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8770539820284737416}
   - {fileID: 3274799665574394096}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3770315142537716091
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301478652636678857}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5085897, y: 1.6814469, z: 1}
+  m_Center: {x: 0.07883072, y: 0.3407234, z: 0}
 --- !u!1 &8623812991802462087
 GameObject:
   m_ObjectHideFlags: 0

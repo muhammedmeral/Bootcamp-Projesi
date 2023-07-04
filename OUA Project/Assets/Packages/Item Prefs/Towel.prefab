@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5207299885434644716}
   - component: {fileID: 7581315545085782832}
   - component: {fileID: 8218359640645347561}
+  - component: {fileID: 6583888633126295737}
   m_Layer: 0
   m_Name: Towel_01 (1)
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6583888633126295737
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412201493721684341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2508596127047765309, guid: 0851ae67239794c41af654591a784d09, type: 3}
 --- !u!1 &3571036983122773917
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +109,7 @@ GameObject:
   - component: {fileID: 6021327346286043690}
   - component: {fileID: 7496707281521305918}
   - component: {fileID: 8610885165801686599}
+  - component: {fileID: 7421730105216018334}
   m_Layer: 0
   m_Name: Towel_02 (1)
   m_TagString: Untagged
@@ -166,6 +182,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7421730105216018334
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3571036983122773917}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6741126354907167975, guid: 0851ae67239794c41af654591a784d09, type: 3}
 --- !u!1 &5738857832617929900
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,8 +221,8 @@ Transform:
   m_GameObject: {fileID: 5738857832617929900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5207299885434644716}
   - {fileID: 6021327346286043690}

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6508144540718936526}
   - component: {fileID: 6372421515256235011}
   - component: {fileID: 5870160946935871206}
+  - component: {fileID: 7624258486815399543}
+  - component: {fileID: 2463750587672391300}
   m_Layer: 0
   m_Name: ChairLeather
   m_TagString: Untagged
@@ -25,14 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852443068851702702}
-  m_LocalRotation: {x: -2.9111989e-15, y: 1, z: 0.00000003774895, w: 0.0000000754979}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -5.11784, y: 0, z: -7.069558}
   m_LocalScale: {x: 1.2564226, y: 1.2564226, z: 1.2564226}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &6372421515256235011
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -83,3 +85,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7624258486815399543
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852443068851702702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.497356, y: 0.53782624, z: 0.7099169}
+  m_Center: {x: 7.1005885e-17, y: 0.26323164, z: 0.048247512}
+--- !u!65 &2463750587672391300
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852443068851702702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.497356, y: 0.5302443, z: 0.029975463}
+  m_Center: {x: 1.6105285e-15, y: 0.7642813, z: 0.38535908}
