@@ -5,12 +5,12 @@ using TMPro;
 
 public class zaman_sayaci : MonoBehaviour
 {
-    float saat = 05;
-    float dakika = 59;
+    float dakika = 05; // 1. oyundaki dakikayý belirtecek deðiþken
+    float saniye = 59; // 2. oyundaki saniyeyi belirtecek deðiþken
 
-    string ikiNokta = ":";
+    string ikiNokta = ":"; // 3. dakika ve saniye ifadelerinin ortasýnda yer alacak string
 
-    public TextMeshProUGUI zamanSayaci;
+    public TextMeshProUGUI zamanSayaci;  //4 arayüz bileþenimiz
     
 
 
@@ -19,9 +19,9 @@ public class zaman_sayaci : MonoBehaviour
     {
         
 
-        if (zamanSayaci!=null)
+        if (zamanSayaci!=null) // 5. eðer bileþen null deðilse, ekranda dakika ve saniyeyi gösterecek kod satýrýmýz.
         {
-            zamanSayaci.text = (int)saat + ikiNokta + (int)dakika; 
+            zamanSayaci.text = (int)dakika + ikiNokta + (int)saniye; 
         }
     }
 
@@ -33,18 +33,20 @@ public class zaman_sayaci : MonoBehaviour
         
         if (zamanSayaci != null)
         {
-            dakika -= Time.deltaTime;
+            saniye -= Time.deltaTime; // 6. saniye deðiþkenimizi, her 1sn içinde 1 azaltmak için Time.deltaTime yapýsýný kullandýk.
 
-            if (dakika < 10) {
-                zamanSayaci.text = (int)saat + ikiNokta+"0" + (int)dakika;
+            if (saniye < 10) { // 7. eðer saniye 10'dan küçükse, rakamýn bir solunda "0" yazmasý için bu þart bloðunu kullandýk.
+                zamanSayaci.text = (int)dakika + ikiNokta+"0" + (int)saniye;
             }
             else
-                zamanSayaci.text = (int)saat + ikiNokta + (int)dakika;
+                zamanSayaci.text = (int)dakika + ikiNokta + (int)saniye; // 8. deðilse de normal yazsýn dedik.
 
-            if (dakika < 0)
+            if (saniye < 0) // 9. eðer saniye 0'dan küçük olursa, dakikayý 1 azalt dedik.
             {
-                saat--;
-                dakika = 59;
+                dakika--;
+                saniye = 59;
+
+                // dakika biterse, olacak þeyleri bu kýsmýa yazacaðýz.
             }
             
         }

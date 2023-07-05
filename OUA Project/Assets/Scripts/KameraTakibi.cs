@@ -12,6 +12,7 @@ public class KameraTakibi : MonoBehaviour
     void Start()
     {
         karakter = transform.parent; //4.kameranýn karakter hareketiyle dönmesi için ayarlandý.
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

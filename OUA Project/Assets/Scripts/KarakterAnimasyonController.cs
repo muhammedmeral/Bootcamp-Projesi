@@ -42,7 +42,7 @@ public class KarakterAnimasyonController : MonoBehaviour
             anim.SetBool("fotoCekiyorMu", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.P) && elindeSilahVar == true) //13.atadýðýmýz tuþa basýldýðýnda karakter silahý býrakýp kamerayý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
+        if (Input.GetKeyDown(KeyCode.Alpha3) && elindeSilahVar == true) //13.atadýðýmýz tuþa basýldýðýnda karakter silahý býrakýp kamerayý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
         {
             elindeKameraVar = true;
             elindeSilahVar = false;
@@ -51,7 +51,7 @@ public class KarakterAnimasyonController : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.U) && elindeKameraVar == true) //13.1 atadýðýmýz tuþa basýldýðýnda karakter kamerayý býrakýp silahý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
+        if (Input.GetKeyDown(KeyCode.Alpha2) && elindeKameraVar == true) //13.1 atadýðýmýz tuþa basýldýðýnda karakter kamerayý býrakýp silahý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
         {
         
             elindeSilahVar = true;
