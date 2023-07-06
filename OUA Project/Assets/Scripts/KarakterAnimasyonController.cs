@@ -91,6 +91,9 @@ public class KarakterAnimasyonController : MonoBehaviour
         anim.SetBool("atesEdiyorMu", true);
     }
 
+  
+   
+   
     IEnumerator SilahAlmaBekletme() //11.  7.maddedeki iþlemi gerçekleþtiren coroutine
     {
         yield return new WaitForSecondsRealtime(1f);
