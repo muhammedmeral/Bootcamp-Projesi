@@ -7,6 +7,7 @@ TagManager:
   - sayac
   - merdiven
   - enemy
+  - duvar
   layers:
   - Default
   - TransparentFX
