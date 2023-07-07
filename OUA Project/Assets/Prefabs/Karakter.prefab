@@ -1435,7 +1435,7 @@ GameObject:
   - component: {fileID: 295617377264741879}
   - component: {fileID: 7009129430051424192}
   - component: {fileID: 183691293909016163}
-  - component: {fileID: 4792438497238303562}
+  - component: {fileID: 670529739}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -1508,7 +1508,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4792438497238303562
+--- !u!114 &670529739
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

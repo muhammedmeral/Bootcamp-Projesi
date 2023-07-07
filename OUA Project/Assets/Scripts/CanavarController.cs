@@ -30,6 +30,7 @@ public class CanavarController : MonoBehaviour
             {
                 anim.SetTrigger("death");
                 nmesh.isStopped = true;
+                this.GetComponent<BoxCollider>().isTrigger = true;
 
             }
 

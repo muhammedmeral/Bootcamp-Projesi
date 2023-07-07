@@ -11,6 +11,10 @@ public class KarakterAnimasyonController : MonoBehaviour
     public GameObject pistol; //3.karakterin elindeki pistolü animasyonlar sýrasýnda açýp kapatmak için kullandýðýmýz deðiþken.
     bool elindeSilahVar = true; //4.karakterin elindeki nesneden diðer nesnelere geçiþte animasyon çakýþmasý olmamasý için kullandýðýmýz deðiþken.
     bool elindeKameraVar = false; //5.karakterin elindeki nesneden diðer nesnelere geçiþte animasyon çakýþmasý olmamasý için kullandýðýmýz deðiþken.
+
+   
+
+    
     void Start()
     {
         elKamerasi.SetActive(false); //12.baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler
@@ -20,6 +24,7 @@ public class KarakterAnimasyonController : MonoBehaviour
 
     void Update()
     {
+       
         if (Input.GetMouseButtonDown(0) && elindeSilahVar == true) //14.atanan tuþa basýldýðýnda ve karakterin elinde silah varsa ateþ etme fonksiyonu çalýþýr.
         {
             AtesEtme();
@@ -89,6 +94,8 @@ public class KarakterAnimasyonController : MonoBehaviour
     void AtesEtme() //10.karakterin ateþ etme animasyonunu gerçekleþtiren fonksiyon.
     {
         anim.SetBool("atesEdiyorMu", true);
+
+        
     }
 
 
@@ -106,4 +113,6 @@ public class KarakterAnimasyonController : MonoBehaviour
         elKamerasi.SetActive(true);
         pistol.SetActive(false);
     }
+
+   
 }
