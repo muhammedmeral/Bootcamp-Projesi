@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6959863045015654014}
   - component: {fileID: 3574283920749195345}
   - component: {fileID: 960445342201214233}
+  - component: {fileID: 2990013961240721874}
   m_Layer: 0
   m_Name: Mug.001
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6173555891349481189}
-  m_LocalRotation: {x: -0.00000003774895, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.400528, y: 0, z: -9.108823}
   m_LocalScale: {x: 0.6588817, y: 0.6588817, z: 0.6588817}
   m_ConstrainProportionsScale: 0
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2990013961240721874
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6173555891349481189}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.075784154
+  m_Height: 0.22976302
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.085893996, z: 0}
