@@ -22,7 +22,7 @@ public class KarakterAnimasyonController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && elindeSilahVar == true) //14.atanan tuþa basýldýðýnda ve karakterin elinde silah varsa ateþ etme fonksiyonu çalýþýr.
         {
-            AtesEtme(); 
+            AtesEtme();
             //ateþ edildiðinde hasar verme sistemi daha sonra burada kullanýlacak.
         }
 
@@ -53,7 +53,7 @@ public class KarakterAnimasyonController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && elindeKameraVar == true) //13.1 atadýðýmýz tuþa basýldýðýnda karakter kamerayý býrakýp silahý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
         {
-        
+
             elindeSilahVar = true;
             elindeKameraVar = false;
             KamerayiBirakipSilahTutma();
@@ -91,13 +91,16 @@ public class KarakterAnimasyonController : MonoBehaviour
         anim.SetBool("atesEdiyorMu", true);
     }
 
+
+
+
     IEnumerator SilahAlmaBekletme() //11.  7.maddedeki iþlemi gerçekleþtiren coroutine
     {
         yield return new WaitForSecondsRealtime(1f);
         pistol.SetActive(true);
         elKamerasi.SetActive(false);
     }
-    IEnumerator KameraAlmaBekletme() 
+    IEnumerator KameraAlmaBekletme()
     {
         yield return new WaitForSecondsRealtime(1f);
         elKamerasi.SetActive(true);
