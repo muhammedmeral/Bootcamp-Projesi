@@ -12,7 +12,7 @@ public class KarakterAnimasyonController : MonoBehaviour
     bool elindeSilahVar = true; //4.karakterin elindeki nesneden diðer nesnelere geçiþte animasyon çakýþmasý olmamasý için kullandýðýmýz deðiþken.
     bool elindeKameraVar = false; //5.karakterin elindeki nesneden diðer nesnelere geçiþte animasyon çakýþmasý olmamasý için kullandýðýmýz deðiþken.
     float atesLimiti = 6f; //16. Ateþ etme animasyonunu limitleyen deðiþken
-    float fotografLimiti = 5f; //16.1 Fotoðraf çekme animasyonunu limitleyen deðiþken.
+    float fotografLimiti = 3f; //16.1 Fotoðraf çekme animasyonunu limitleyen deðiþken.
     float sonTiklama; //17. Son ateþ etme süresini tutacak deðiþken.
     float tiklamaBeklemeSuresi = 0.65f;//18. Ateþ etme ve fotoðraf çekme animasyonlarýnýn bekleme süresini sýnýrlayan deðiþken.
     public float karakterHP = 100f;

@@ -13,12 +13,14 @@ public class CanavarController : MonoBehaviour
     public float canavarHp = 100;
     float deger = 0;
     public GameObject karakter;
+    BoxCollider canavarCollider;
 
 
     private void Start()
     {
 
         nmesh = GetComponent<NavMeshAgent>(); //6. Navmesh componentimizi cache ettik.
+        canavarCollider = GetComponent<BoxCollider>();
 
     }
 
@@ -28,6 +30,8 @@ public class CanavarController : MonoBehaviour
 
         if (canavarHp <= 0)
         {
+            this.canavarCollider.isTrigger=true;
+
             deger++;
             if (deger == 1)
             {
@@ -82,7 +86,7 @@ public class CanavarController : MonoBehaviour
 
     public void HasarAl()
     {
-        canavarHp -= Random.Range(15, 30);
+        canavarHp -= Random.Range(20, 30);
     }
 
     public void HasarVer()

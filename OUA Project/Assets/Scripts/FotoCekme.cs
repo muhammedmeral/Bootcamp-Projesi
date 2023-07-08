@@ -8,25 +8,35 @@ public class FotoCekme : MonoBehaviour
     public Camera fotoCekmeKamerasi;
     public RawImage fotoGosterici;
     private List<Texture2D> fotoTextureList;
+    Camera mainCam;
+    Vector3 mainPos;
+    Quaternion mainRot;
+    float fotoCekmeLimiti = 3f;
+    
 
     private void Start()
     {
         fotoTextureList = new List<Texture2D>();
-       
+        mainCam = Camera.main;
        
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        mainPos = mainCam.transform.position;
+        mainRot = mainCam.transform.rotation;
+
+        if (Input.GetMouseButtonDown(0)&&fotoCekmeLimiti>0)
         {
+            
+            Instantiate(fotoCekmeKamerasi, mainPos, mainRot);
             CanavariFotoCek();
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
             Kaydet();
             Debug.Log("Foto kaydedildi.");
+            Destroy(fotoCekmeKamerasi);
+            fotoCekmeLimiti--;
         }
+        
         if (Input.GetKeyDown(KeyCode.T))
         {
             TumFotograflariGoster();
@@ -37,16 +47,10 @@ public class FotoCekme : MonoBehaviour
     {
         RenderTexture renderTexture = new RenderTexture(Screen.width, Screen.height, 24);
         fotoCekmeKamerasi.targetTexture = renderTexture;
-        Texture2D fotoTexture2D = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
-        fotoCekmeKamerasi.Render();
-        RenderTexture.active = renderTexture;
-        fotoTexture2D.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-        fotoTexture2D.Apply();
-        fotoCekmeKamerasi.targetTexture = null;
-        RenderTexture.active = null;
-        Destroy(renderTexture);
+        Texture2D fotoTexture2D = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false); // Deðiþiklik burada
 
-        fotoTextureList.Add(fotoTexture2D);
+        // Ekranýn kitlenmesini önlemek için renderTexture'in tamamlanmasýný bekleyin
+        StartCoroutine(CaptureRenderTexture(renderTexture, fotoTexture2D));
     }
 
     public void FotoyuGoster()
@@ -87,5 +91,21 @@ public class FotoCekme : MonoBehaviour
             string dosyaYolu = Application.persistentDataPath + "/foto" + (i + 1) + ".png";
             System.IO.File.WriteAllBytes(dosyaYolu, fotoBytes);
         }
+    }
+
+
+    private IEnumerator CaptureRenderTexture(RenderTexture renderTexture, Texture2D fotoTexture2D)
+    {
+        yield return new WaitForEndOfFrame();
+
+        fotoCekmeKamerasi.Render();
+        RenderTexture.active = renderTexture;
+        fotoTexture2D.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        fotoTexture2D.Apply();
+        fotoCekmeKamerasi.targetTexture = null;
+        RenderTexture.active = null;
+        Destroy(renderTexture);
+
+        fotoTextureList.Add(fotoTexture2D);
     }
 }
