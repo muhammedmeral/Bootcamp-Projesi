@@ -12,6 +12,8 @@ public class CanavarController : MonoBehaviour
 
     public float canavarHp = 100;
     float deger = 0;
+    public GameObject karakter;
+
 
     private void Start()
     {
@@ -23,6 +25,7 @@ public class CanavarController : MonoBehaviour
     private void Update()
     {
 
+
         if (canavarHp <= 0)
         {
             deger++;
@@ -30,7 +33,6 @@ public class CanavarController : MonoBehaviour
             {
                 anim.SetTrigger("death");
                 nmesh.isStopped = true;
-                this.GetComponent<BoxCollider>().isTrigger = true;
 
             }
 
@@ -72,6 +74,7 @@ public class CanavarController : MonoBehaviour
                 anim.SetBool("isRun", false);
                 anim.SetBool("isAttack1", true);
                 anim.SetBool("isAttack2", true);
+                //HasarVer();
                 StartCoroutine(IddleBekleme());
             }
         }
@@ -79,7 +82,17 @@ public class CanavarController : MonoBehaviour
 
     public void HasarAl()
     {
-        canavarHp -= Random.Range(5, 15);
+        canavarHp -= Random.Range(15, 30);
+    }
+
+    public void HasarVer()
+    {
+        if (karakter != null)
+        {
+            karakter.GetComponent<KarakterAnimasyonController>().HasarAl();
+        }
+
+
     }
 
     void walkToRun() //8. Bu fonksiyonda, canavar yürürken, koþma durumuna geçecek.
@@ -105,7 +118,7 @@ public class CanavarController : MonoBehaviour
         nmesh.stoppingDistance = 50f;
         yield return new WaitForSecondsRealtime(2f);
         nmesh.stoppingDistance = 2.5f;
-        
+
     }
 
 }

@@ -15,6 +15,8 @@ public class KarakterAnimasyonController : MonoBehaviour
     float fotografLimiti = 5f; //16.1 Fotoðraf çekme animasyonunu limitleyen deðiþken.
     float sonTiklama; //17. Son ateþ etme süresini tutacak deðiþken.
     float tiklamaBeklemeSuresi = 0.65f;//18. Ateþ etme ve fotoðraf çekme animasyonlarýnýn bekleme süresini sýnýrlayan deðiþken.
+    public float karakterHP = 100f;
+    public GameObject Karakter;
     public GameObject mermiBir;
     public GameObject mermiIki;
     public GameObject mermiUc;
@@ -62,94 +64,117 @@ public class KarakterAnimasyonController : MonoBehaviour
 
     void Update()
     {
-       
-        if (Input.GetMouseButtonDown(0) && elindeSilahVar == true&&atesLimiti>0) //14.atanan tuþa basýldýðýnda ve karakterin elinde silah varsa ateþ etme fonksiyonu çalýþýr.
-        {
-            if (Time.time-sonTiklama>tiklamaBeklemeSuresi) //19. Bekleme süresi ve ateþ etme limitini burada kullandýk.
-            {
-                AtesEtme();
-                              
-                //ateþ edildiðinde hasar verme sistemi daha sonra burada kullanýlacak.
-                sonTiklama = Time.time;
 
-                switch (atesLimiti) //Ateþ ettikçe mermi sayýsýný gösteren sembollerin ekrandan silinmesini saðlayacak yapý.
+        if (karakterHP <= 0)
+        {
+            Karakter.SetActive(false);
+        }
+
+        else
+        {
+            if (Input.GetMouseButtonDown(0) && elindeSilahVar == true && atesLimiti > 0) //14.atanan tuþa basýldýðýnda ve karakterin elinde silah varsa ateþ etme fonksiyonu çalýþýr.
+            {
+                if (Time.time - sonTiklama > tiklamaBeklemeSuresi) //19. Bekleme süresi ve ateþ etme limitini burada kullandýk.
                 {
-                    case 6: mermiBir.SetActive(false);                        
-                        break;
-                    case 5:mermiIki.SetActive(false);
-                        break;
-                    case 4:mermiUc.SetActive(false);
-                        break;
-                    case 3:mermiDort.SetActive(false);
-                        break;
-                    case 2: mermiBes.SetActive(false);
-                        break;
-                    case 1: mermiAlti.SetActive(false);
-                        break;
-                    default:
-                        break;
+                    AtesEtme();
+
+                    //ateþ edildiðinde hasar verme sistemi daha sonra burada kullanýlacak.
+                    sonTiklama = Time.time;
+
+                    switch (atesLimiti) //Ateþ ettikçe mermi sayýsýný gösteren sembollerin ekrandan silinmesini saðlayacak yapý.
+                    {
+                        case 6:
+                            mermiBir.SetActive(false);
+                            break;
+                        case 5:
+                            mermiIki.SetActive(false);
+                            break;
+                        case 4:
+                            mermiUc.SetActive(false);
+                            break;
+                        case 3:
+                            mermiDort.SetActive(false);
+                            break;
+                        case 2:
+                            mermiBes.SetActive(false);
+                            break;
+                        case 1:
+                            mermiAlti.SetActive(false);
+                            break;
+                        default:
+                            break;
+                    }
+                    atesLimiti--;
                 }
-                atesLimiti--;
             }
-        }
 
-        //ateþ etme limiti dolduðunda silahýn boþ olduðunu anlayacaðýmýz ses efekti burada bir if açýlarak yapýlacak.
+            //ateþ etme limiti dolduðunda silahýn boþ olduðunu anlayacaðýmýz ses efekti burada bir if açýlarak yapýlacak.
 
-        else //15.eðer 14.maddedeki þartlar saðlanmýyorsa ateþ etme animasyonunun durmasý saðlanýr.
-        {
-            anim.SetBool("atesEdiyorMu", false);
-        }
-
-        if (Input.GetMouseButtonDown(0) && elindeKameraVar == true&&fotografLimiti>0) //14.1 atanan tuþa basýldýðýnda ve karakterin elinde kamera varsa fotoðraf çekme fonksiyonu çalýþýr.
-        {
-            if (Time.time - sonTiklama > tiklamaBeklemeSuresi)
+            else //15.eðer 14.maddedeki þartlar saðlanmýyorsa ateþ etme animasyonunun durmasý saðlanýr.
             {
-                FotoCekme();
-                fotografLimiti--;
-                sonTiklama = Time.time;                
+                anim.SetBool("atesEdiyorMu", false);
             }
-            
-            //--fotoðraf çekildiðinde fotoðraflarýn depolamada kaydedilmesi ve fotoðraf çekilme sýrasýnda raycast yöntemiyle sorgulamanýn yapýlmasý iþlemleri buraya gelicek.
+
+            if (Input.GetMouseButtonDown(0) && elindeKameraVar == true && fotografLimiti > 0) //14.1 atanan tuþa basýldýðýnda ve karakterin elinde kamera varsa fotoðraf çekme fonksiyonu çalýþýr.
+            {
+                if (Time.time - sonTiklama > tiklamaBeklemeSuresi)
+                {
+                    FotoCekme();
+                    fotografLimiti--;
+                    sonTiklama = Time.time;
+                }
+
+                //--fotoðraf çekildiðinde fotoðraflarýn depolamada kaydedilmesi ve fotoðraf çekilme sýrasýnda raycast yöntemiyle sorgulamanýn yapýlmasý iþlemleri buraya gelicek.
+            }
+            //Fotoðraf çekme limiti dolduðunda kullanýcýnýn anlamasýný saðlayacak ses efekti burada çalacak.
+
+            else //15.1 eðer 14.1.maddedeki þartlar saðlanmýyorsa fotoðraf çekme animasyonunun durmasý saðlanýr.
+            {
+                anim.SetBool("fotoCekiyorMu", false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3) && elindeSilahVar == true) //13.atadýðýmýz tuþa basýldýðýnda karakter silahý býrakýp kamerayý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
+            {
+                elindeKameraVar = true;
+                elindeSilahVar = false;
+                SilahiBirakipKamerayýTutma();
+
+                kameraRaw.color = aktifColor;
+                silahRaw.color = deaktifColor;
+                mermiBirRaw.color = deaktifColor;
+                mermiIkiRaw.color = deaktifColor;
+                mermiUcRaw.color = deaktifColor;
+                mermiDortRaw.color = deaktifColor;
+                mermiBesRaw.color = deaktifColor;
+                mermiAltiRaw.color = deaktifColor;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2) && elindeKameraVar == true) //13.1 atadýðýmýz tuþa basýldýðýnda karakter kamerayý býrakýp silahý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
+            {
+                elindeSilahVar = true;
+                elindeKameraVar = false;
+                KamerayiBirakipSilahTutma();
+
+                kameraRaw.color = deaktifColor;
+                silahRaw.color = aktifColor;
+                mermiBirRaw.color = aktifColor;
+                mermiIkiRaw.color = aktifColor;
+                mermiUcRaw.color = aktifColor;
+                mermiDortRaw.color = aktifColor;
+                mermiBesRaw.color = aktifColor;
+                mermiAltiRaw.color = aktifColor;
+            }
         }
-        //Fotoðraf çekme limiti dolduðunda kullanýcýnýn anlamasýný saðlayacak ses efekti burada çalacak.
 
-        else //15.1 eðer 14.1.maddedeki þartlar saðlanmýyorsa fotoðraf çekme animasyonunun durmasý saðlanýr.
-        {
-            anim.SetBool("fotoCekiyorMu", false);
-        }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) && elindeSilahVar == true) //13.atadýðýmýz tuþa basýldýðýnda karakter silahý býrakýp kamerayý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
-        {
-            elindeKameraVar = true;
-            elindeSilahVar = false;
-            SilahiBirakipKamerayýTutma();
+       
+        
 
-            kameraRaw.color = aktifColor;
-            silahRaw.color = deaktifColor;
-            mermiBirRaw.color = deaktifColor;
-            mermiIkiRaw.color = deaktifColor;
-            mermiUcRaw.color = deaktifColor;
-            mermiDortRaw.color = deaktifColor;
-            mermiBesRaw.color = deaktifColor;
-            mermiAltiRaw.color = deaktifColor;
-        }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && elindeKameraVar == true) //13.1 atadýðýmýz tuþa basýldýðýnda karakter kamerayý býrakýp silahý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
-        {
-            elindeSilahVar = true;
-            elindeKameraVar = false;
-            KamerayiBirakipSilahTutma();
-
-            kameraRaw.color = deaktifColor;
-            silahRaw.color = aktifColor;
-            mermiBirRaw.color = aktifColor;
-            mermiIkiRaw.color = aktifColor;
-            mermiUcRaw.color = aktifColor;
-            mermiDortRaw.color = aktifColor;
-            mermiBesRaw.color = aktifColor;
-            mermiAltiRaw.color = aktifColor;
-        }        
-
+    public void HasarAl()
+    {
+        karakterHP -= Random.Range(10f, 20f);
     }
 
     void SilahiBirakipKamerayýTutma()  //6.karakterin elindeki silahý býrakýp kamerayý aldýðý sýrada gerçekleþecek olan animasyon ve iþlemleri gerçekleþtirecek fonksiyon.
