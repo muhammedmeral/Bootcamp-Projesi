@@ -12,13 +12,13 @@ public class FotoCekme : MonoBehaviour
     Vector3 mainPos;
     Quaternion mainRot;
     float fotoCekmeLimiti = 3f;
-    
+
 
     private void Start()
     {
         fotoTextureList = new List<Texture2D>();
         mainCam = Camera.main;
-       
+
     }
 
     private void Update()
@@ -26,17 +26,22 @@ public class FotoCekme : MonoBehaviour
         mainPos = mainCam.transform.position;
         mainRot = mainCam.transform.rotation;
 
-        if (Input.GetMouseButtonDown(0)&&fotoCekmeLimiti>0)
+        if (Input.GetMouseButtonDown(0) && fotoCekmeLimiti > 0)
         {
-            
+
+
+
             Instantiate(fotoCekmeKamerasi, mainPos, mainRot);
             CanavariFotoCek();
             Kaydet();
             Debug.Log("Foto kaydedildi.");
             Destroy(fotoCekmeKamerasi);
             fotoCekmeLimiti--;
+
+
+
         }
-        
+
         if (Input.GetKeyDown(KeyCode.T))
         {
             TumFotograflariGoster();
