@@ -6,45 +6,49 @@ using UnityEngine.UI;
 public class FotoCekme : MonoBehaviour
 {
     public Camera fotoCekmeKamerasi;
-    public RawImage fotoGosterici;
+    public List<RawImage> fotoGostericiler; // Birden fazla Raw Image için liste tanýmladýk
     private List<Texture2D> fotoTextureList;
-    Camera mainCam;
-    Vector3 mainPos;
-    Quaternion mainRot;
-    float fotoCekmeLimiti = 3f;
+    int fotoCekmeLimiti = 3;
 
+    public LayerMask canavarLayer;
 
+    public GameObject canavar;
+    public Camera anaKamera;
+
+    
     private void Start()
     {
         fotoTextureList = new List<Texture2D>();
-        mainCam = Camera.main;
-
     }
 
     private void Update()
     {
-        mainPos = mainCam.transform.position;
-        mainRot = mainCam.transform.rotation;
-
+        
         if (Input.GetMouseButtonDown(0) && fotoCekmeLimiti > 0)
         {
-
-
-
-            Instantiate(fotoCekmeKamerasi, mainPos, mainRot);
             CanavariFotoCek();
+            
+            
             Kaydet();
-            Debug.Log("Foto kaydedildi.");
-            Destroy(fotoCekmeKamerasi);
             fotoCekmeLimiti--;
-
-
-
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
+        TumFotograflariGoster();
+    }
+
+
+    public bool KadrajdaMi()
+    {
+        Vector3 objePozisyon = canavar.transform.position;
+        Vector3 ekranPozisyonu = anaKamera.WorldToViewportPoint(objePozisyon);
+
+        if (ekranPozisyonu.x > 0 && ekranPozisyonu.x < 1 && ekranPozisyonu.y > 0 && ekranPozisyonu.y < 1 && ekranPozisyonu.z > 0)
         {
-            TumFotograflariGoster();
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -52,39 +56,36 @@ public class FotoCekme : MonoBehaviour
     {
         RenderTexture renderTexture = new RenderTexture(Screen.width, Screen.height, 24);
         fotoCekmeKamerasi.targetTexture = renderTexture;
-        Texture2D fotoTexture2D = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false); // Deðiþiklik burada
+        Texture2D fotoTexture2D = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
+        fotoCekmeKamerasi.Render();
+        RenderTexture.active = renderTexture;
+        fotoTexture2D.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        fotoTexture2D.Apply();
+        fotoCekmeKamerasi.targetTexture = null;
+        RenderTexture.active = null;
+        Destroy(renderTexture);
 
-        // Ekranýn kitlenmesini önlemek için renderTexture'in tamamlanmasýný bekleyin
-        StartCoroutine(CaptureRenderTexture(renderTexture, fotoTexture2D));
-    }
-
-    public void FotoyuGoster()
-    {
-        if (fotoTextureList.Count > 0)
+        fotoTextureList.Add(fotoTexture2D);  //dasdadasdasdasdasd
+        if (KadrajdaMi() == true)
         {
-            Texture2D sonFoto = fotoTextureList[fotoTextureList.Count - 1];
-            fotoGosterici.texture = sonFoto;
+            Debug.Log("Canaver kadrajdaydi len efferin");
+        }
+        else
+        {
+            Debug.Log("Masmaalesef beceremedin denyo");
         }
     }
 
-    public void TumFotograflariGoster()
+    public void TumFotograflariGoster()   //Bu kýsým arayüz iþinden sonra silinecek.
     {
-        if (fotoTextureList.Count > 0)
+        for (int i = 0; i < fotoTextureList.Count; i++)
         {
-            int xOffset = 0;
-            int totalWidth = Screen.width * fotoTextureList.Count;
-            Texture2D tumFotograflar = new Texture2D(totalWidth, Screen.height, TextureFormat.RGB24, true);
-
-            foreach (Texture2D fotoTexture in fotoTextureList)
+            if (i < fotoGostericiler.Count)
             {
-                Color32[] pixels = fotoTexture.GetPixels32();
-                tumFotograflar.SetPixels32(xOffset, 0, fotoTexture.width, fotoTexture.height, pixels);
-                xOffset += fotoTexture.width;
+                RawImage fotoGosterici = fotoGostericiler[i];
+                Texture2D fotoTexture = fotoTextureList[i];
+                fotoGosterici.texture = fotoTexture;
             }
-
-            tumFotograflar.Apply();
-            fotoGosterici.texture = tumFotograflar;
-
         }
     }
 
@@ -96,21 +97,5 @@ public class FotoCekme : MonoBehaviour
             string dosyaYolu = Application.persistentDataPath + "/foto" + (i + 1) + ".png";
             System.IO.File.WriteAllBytes(dosyaYolu, fotoBytes);
         }
-    }
-
-
-    private IEnumerator CaptureRenderTexture(RenderTexture renderTexture, Texture2D fotoTexture2D)
-    {
-        yield return new WaitForEndOfFrame();
-
-        fotoCekmeKamerasi.Render();
-        RenderTexture.active = renderTexture;
-        fotoTexture2D.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-        fotoTexture2D.Apply();
-        fotoCekmeKamerasi.targetTexture = null;
-        RenderTexture.active = null;
-        Destroy(renderTexture);
-
-        fotoTextureList.Add(fotoTexture2D);
     }
 }

@@ -29,13 +29,13 @@ public class AtesSistemi : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)&&atesSiniri>0) //2. Bu kýsýmda mouseye týkladýðýmýzda ekranda çýkacak particle effectleri kontrol edeceðiz.
+        if (Input.GetMouseButtonDown(0) && atesSiniri > 0) //2. Bu kýsýmda mouseye týkladýðýmýzda ekranda çýkacak particle effectleri kontrol edeceðiz.
         {
             if (Time.time - sonTiklama > tiklamaBeklemeSuresi)
             {
                 AtesEt(); //4. Burada ateþ etme iþlemimiz gerçekleþiyor.
                 StartCoroutine(muzzleBekleme());//11. Burada muzzle effect çalýþýyor.
-                atesSiniri--;         
+                atesSiniri--;
                 sonTiklama = Time.time; //10. Son týklama zamaný ile ilgili deðiþkeni güncelliyoruz.
             }
         }
@@ -67,7 +67,7 @@ public class AtesSistemi : MonoBehaviour
                     {
                         Destroy(wallObje); //28. Önce, daha önce bir obje varsa onu yok ettik ki nullreferance hatasý almayalým diye.
                     }
-                    wallObje =Instantiate(wallObje, wallKonum, wallRotation); //29. Ardýndan da yeni bir obje ürettik.                    
+                    wallObje = Instantiate(wallObje, wallKonum, wallRotation); //29. Ardýndan da yeni bir obje ürettik.                    
 
                 }
 

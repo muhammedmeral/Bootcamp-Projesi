@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class KarakterAnimasyonController : MonoBehaviour
 {
     //crosshair birden fazla fonksiyonun içinde kullanýlacak(silah tutma,ateþ etme, kamera tutma,fotoðraf çekme vs.) unutma!!!!
@@ -27,30 +28,32 @@ public class KarakterAnimasyonController : MonoBehaviour
     public GameObject kameraSembol;
     Color deaktifColor = new Color(1f,1f,1f,0.05f);
     Color aktifColor = new Color(25.5f, 25.5f, 25.5f, 25.5f);
-    RawImage silahRaw;
-    RawImage kameraRaw;
-    RawImage mermiBirRaw;
-    RawImage mermiIkiRaw;
-    RawImage mermiUcRaw;
-    RawImage mermiDortRaw;
-    RawImage mermiBesRaw;
-    RawImage mermiAltiRaw;
+    Image silahRaw;
+    Image kameraRaw;
+    Image mermiBirRaw;
+    Image mermiIkiRaw;
+    Image mermiUcRaw;
+    Image mermiDortRaw;
+    Image mermiBesRaw;
+    Image mermiAltiRaw;
 
-
+    public TextMeshProUGUI hpText;
+    public TextMeshProUGUI fotoSayisi;
+    int hpInt;
 
     void Start()
     {
         elKamerasi.SetActive(false); //12.baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler
         elindeSilahVar = true; //12.1 baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler
         elindeKameraVar = false; //12.2 baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler
-        silahRaw = silahSembol.GetComponent<RawImage>();
-        kameraRaw = kameraSembol.GetComponent<RawImage>();
-        mermiBirRaw=mermiBir.GetComponent<RawImage>();
-        mermiIkiRaw=mermiIki.GetComponent<RawImage>();
-        mermiUcRaw=mermiUc.GetComponent<RawImage>();
-        mermiDortRaw=mermiDort.GetComponent<RawImage>();
-        mermiBesRaw=mermiBes.GetComponent<RawImage>();
-        mermiAltiRaw=mermiAlti.GetComponent<RawImage>();
+        silahRaw = silahSembol.GetComponent<Image>();
+        kameraRaw = kameraSembol.GetComponent<Image>();
+        mermiBirRaw=mermiBir.GetComponent<Image>();
+        mermiIkiRaw=mermiIki.GetComponent<Image>();
+        mermiUcRaw=mermiUc.GetComponent<Image>();
+        mermiDortRaw=mermiDort.GetComponent<Image>();
+        mermiBesRaw=mermiBes.GetComponent<Image>();
+        mermiAltiRaw=mermiAlti.GetComponent<Image>();
         silahRaw.color = aktifColor;
         kameraRaw.color = deaktifColor;
         mermiBirRaw.color = aktifColor;
@@ -64,14 +67,19 @@ public class KarakterAnimasyonController : MonoBehaviour
 
     void Update()
     {
+        hpInt = Mathf.RoundToInt(karakterHP);
+
+        
 
         if (karakterHP <= 0)
         {
             Karakter.SetActive(false);
+            hpText.text = "0";
         }
-
+        
         else
         {
+            hpText.text =hpInt.ToString();
             if (Input.GetMouseButtonDown(0) && elindeSilahVar == true && atesLimiti > 0) //14.atanan tuþa basýldýðýnda ve karakterin elinde silah varsa ateþ etme fonksiyonu çalýþýr.
             {
                 if (Time.time - sonTiklama > tiklamaBeklemeSuresi) //19. Bekleme süresi ve ateþ etme limitini burada kullandýk.
@@ -167,8 +175,8 @@ public class KarakterAnimasyonController : MonoBehaviour
         }
 
 
-       
-        
+        fotoSayisi.text = "x" + fotografLimiti;
+
 
     }
 
