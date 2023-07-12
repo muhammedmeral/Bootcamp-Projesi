@@ -15,10 +15,14 @@ public class FotoCekme : MonoBehaviour
     public GameObject canavar;
     public Camera anaKamera;
 
+    private AudioSource audioSource; //sesin kaynaðýný belirlemek için bir bileþen oluþturuldu.
+    public AudioClip fotoCek; //foto çektiðinde çýkan sesi kullanmak için audioclip bileþeni oluþturuldu.
+
     
     private void Start()
     {
         fotoTextureList = new List<Texture2D>();
+        audioSource = GetComponent<AudioSource>(); //audiosource componentini cache ettik.
     }
 
     private void Update()
@@ -27,7 +31,7 @@ public class FotoCekme : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && fotoCekmeLimiti > 0)
         {
             CanavariFotoCek();
-            
+            audioSource.PlayOneShot(fotoCek); //fotoðraf çekme sesinin oynatýlmasý saðlandý.
             
             Kaydet();
             fotoCekmeLimiti--;

@@ -7,7 +7,8 @@ public class KarakterHareketleri : MonoBehaviour
     [SerializeField] float hareketHizi=1.25f; //1.karakterin hýzýný belirleyen bir deðiþken oluþturuldu ve deðer atandý.
     Rigidbody rb; //2.Rigidbody bileþeninden rb adlý deðiþken oluþturuldu.
 
-
+    private AudioSource audioSource;
+    public AudioClip yurume;
    
 
 
@@ -15,10 +16,12 @@ public class KarakterHareketleri : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>(); //3.karakterin hareketini Rigidbody bileþeni üzerinden kontrol etmek için rb deðiþkeni kullanýldý. 
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
     {
+
         float yatay = Input.GetAxis("Horizontal") * hareketHizi * 100 * Time.deltaTime; //4.yatay giriþlerin alýnmasý ve kontrol edilmesi (yatay yöndeki hareketler)
         float dikey = Input.GetAxis("Vertical") * hareketHizi * 100 * Time.deltaTime; //5.dikey giriþlerin alýnmasý ve kontrol edilmesi (dikey yöndeki hareketler)
 
@@ -31,7 +34,20 @@ public class KarakterHareketleri : MonoBehaviour
         }
         else
             hareketHizi = 1.25f;
+
+        if (yatay!=0 || dikey != 0)
+        {
+            audioSource.PlayOneShot(yurume);
+           
+        }
+
+
+
+
     }
+
+
+
 
 
 

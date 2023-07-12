@@ -54,6 +54,10 @@ public class KarakterAnimasyonController : MonoBehaviour
     private float beklemeSuresi = 3f; // Geçiþ süresi (saniye)
     private bool tetiklendiMi = false; // Geçiþ iþlemi devam ediyor mu? 
 
+    private AudioSource audioSource; //ses kaynaðýný belirlemek için bir bileþen oluþturuldu.
+    public AudioClip yaralanma; //karakter hasar aldýðýnda kullanýlacak ses için bir audioclip bileþeni oluþturuldu.
+    public AudioClip silahAl; //karakter silahý aldýðýnda kullanýlacak ses için bir audioclip bileþeni oluþturuldu.
+
     void Start()
     {
         elKamerasi.SetActive(false); //12.baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler
@@ -68,14 +72,14 @@ public class KarakterAnimasyonController : MonoBehaviour
         mermiAltiIM = mermiAlti.GetComponent<Image>();
 
 
-         mermiBirIM.color = aktifColor;  //arayüzdeki unsurlarýn baþlangýçtaki renklerini verdik.
-         mermiIkýIM.color = aktifColor;
-         mermiUcIM.color=   aktifColor;
-         mermiDortIM.color= aktifColor;
-         mermiBesIM.color=  aktifColor;
-         mermiAltiIM.color= aktifColor;
-         silahSembol.color= aktifColor;
-         kameraSembol.color=deaktifColor;
+        mermiBirIM.color = aktifColor;  //arayüzdeki unsurlarýn baþlangýçtaki renklerini verdik.
+        mermiIkýIM.color = aktifColor;
+        mermiUcIM.color=   aktifColor;
+        mermiDortIM.color= aktifColor;
+        mermiBesIM.color=  aktifColor;
+        mermiAltiIM.color= aktifColor;
+        silahSembol.color= aktifColor;
+        kameraSembol.color=deaktifColor;
         fotoSayisi.color = textColorDeaktif;
 
         silahCross.gameObject.SetActive(true);  //silahla baþlayacaðýmýz için crosslarýn aktifliðini ayarladýk.
@@ -83,8 +87,8 @@ public class KarakterAnimasyonController : MonoBehaviour
 
 
         deger = karakterHP; //deðeri hp ye atadýk.
-        
 
+        audioSource = GetComponent<AudioSource>(); //audiosource compenenti cache edildi.
         
     }
 
@@ -203,6 +207,7 @@ public class KarakterAnimasyonController : MonoBehaviour
                 elindeSilahVar = true;
                 elindeKameraVar = false;
                 KamerayiBirakipSilahTutma();
+               
 
                 mermiBirIM.color = aktifColor;
                 mermiIkýIM.color = aktifColor;
@@ -227,11 +232,13 @@ public class KarakterAnimasyonController : MonoBehaviour
     public void HasarAl()
     {
         karakterHP -= Random.Range(10f, 20f);
+        audioSource.PlayOneShot(yaralanma); //karakter hasar aldýðýnda çýkacak sesin oynatýlmasý saðlandý.
         
     }
     public void hasarALLight()
     {
         karakterHP -= Random.Range(5f, 10f);
+        audioSource.PlayOneShot(yaralanma); //karakter hasar aldýðýnda çýkacak sesin oynatýlmasý saðlandý.
     }
 
     void SilahiBirakipKamerayýTutma()  //6.karakterin elindeki silahý býrakýp kamerayý aldýðý sýrada gerçekleþecek olan animasyon ve iþlemleri gerçekleþtirecek fonksiyon.
@@ -252,6 +259,7 @@ public class KarakterAnimasyonController : MonoBehaviour
         anim.SetTrigger("kameraTutarkenBirakma");
         StartCoroutine(SilahAlmaBekletme());
         anim.SetTrigger("kameraBirakirkenSilahAlma");
+        audioSource.PlayOneShot(silahAl); //silahý alýrken çýkan sesin oynatýlmasý saðlandý.
         anim.SetTrigger("silahAlirkenTutma");
     }
 

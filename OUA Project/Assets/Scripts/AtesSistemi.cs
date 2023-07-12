@@ -20,17 +20,20 @@ public class AtesSistemi : MonoBehaviour
     Vector3 wallKonum; //23. raycast ýþýnýnýn canavara çarptýðý pozisyonu tutacak deðiþken.
     Quaternion wallRotation; //24. raycast açýsýnýn duvar tagýna sahip nesnelere çarptýðý açý    
 
+    private AudioSource audioSource; //sesin kaynaðýný belirlemek için bileþen oluþturuldu.
+    public AudioClip atesEt; //ateþ ettiðinde çýkacak ses için audioclip bileþeni oluþturuldu.
 
     void Start()
     {
         kamera = Camera.main;
-
+        audioSource = GetComponent<AudioSource>(); //audiosource compenentini cache ettik.
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && atesSiniri > 0) //2. Bu kýsýmda mouseye týkladýðýmýzda ekranda çýkacak particle effectleri kontrol edeceðiz.
         {
+            audioSource.PlayOneShot(atesEt); //ateþ ettiðimizde çýkan sesin oynatýlmasý saðlandý.
             if (Time.time - sonTiklama > tiklamaBeklemeSuresi)
             {
                 AtesEt(); //4. Burada ateþ etme iþlemimiz gerçekleþiyor.

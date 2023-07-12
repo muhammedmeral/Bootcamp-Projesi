@@ -15,13 +15,18 @@ public class CanavarController : MonoBehaviour
     public GameObject karakter;
     BoxCollider canavarCollider;
 
+    private AudioSource audioSource; //sesin kaynaðýný belirlemek için bileþen oluþturuldu.
+    public AudioClip olme; //canavar öldüðünde kullanýlacak ses için audioclip bileþeni oluþturuldu.
+    public AudioClip attack1; //canavar karaktere saldýrdýðýnda kullanýlacak ses için audioclip bileþeni oluþturuldu.
+    public AudioClip attack2; //canavar karaktere saldýrdýðýnda kullanýlacak ses için audioclip bileþeni oluþturuldu.
+    public AudioClip yaralanma; //canavar hasar aldýðýnda kullanýlacak ses için audioclip bileþeni oluþturuldu.
 
     private void Start()
     {
 
         nmesh = GetComponent<NavMeshAgent>(); //6. Navmesh componentimizi cache ettik.
         canavarCollider = GetComponent<BoxCollider>();
-
+        audioSource = GetComponent<AudioSource>(); //audiosource componentini cache ettik.
     }
 
     private void Update()
@@ -37,6 +42,7 @@ public class CanavarController : MonoBehaviour
             {
                 anim.SetTrigger("death");
                 nmesh.isStopped = true;
+                audioSource.PlayOneShot(olme); //canavar öldüðünde çýkacak sesin oynatýlmasý saðlandý.
 
             }
 
@@ -87,6 +93,7 @@ public class CanavarController : MonoBehaviour
     public void HasarAl()
     {
         canavarHp -= Random.Range(20, 30);
+        audioSource.PlayOneShot(yaralanma); //karakter canavara hasar verdiðinde çýkacak olan sesin oynatýlmasý saðlandý.
     }
 
     public void HasarVer()
@@ -94,6 +101,7 @@ public class CanavarController : MonoBehaviour
         if (karakter != null)
         {
             karakter.GetComponent<KarakterAnimasyonController>().HasarAl();
+            audioSource.PlayOneShot(attack1); //canavar karaktere hasar verdiðinde çýkacak olan sesin oynatýlmasý saðlandý.
         }
 
 
@@ -103,6 +111,7 @@ public class CanavarController : MonoBehaviour
         if (karakter != null)
         {
             karakter.GetComponent<KarakterAnimasyonController>().hasarALLight();
+            audioSource.PlayOneShot(attack2); //canavar karaktere hasar verdiðinde çýkacak olan sesin oynatýlmasý saðlandý.
         }
     }
 
