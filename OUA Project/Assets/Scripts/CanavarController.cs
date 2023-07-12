@@ -98,6 +98,13 @@ public class CanavarController : MonoBehaviour
 
 
     }
+    public void hasarVerLight()
+    {
+        if (karakter != null)
+        {
+            karakter.GetComponent<KarakterAnimasyonController>().hasarALLight();
+        }
+    }
 
     void walkToRun() //8. Bu fonksiyonda, canavar yürürken, koþma durumuna geçecek.
     {

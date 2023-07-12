@@ -17,65 +17,103 @@ public class KarakterAnimasyonController : MonoBehaviour
     float sonTiklama; //17. Son ateþ etme süresini tutacak deðiþken.
     float tiklamaBeklemeSuresi = 0.65f;//18. Ateþ etme ve fotoðraf çekme animasyonlarýnýn bekleme süresini sýnýrlayan deðiþken.
     public float karakterHP = 100f;
-    public GameObject Karakter;
-    public GameObject mermiBir;
+    public GameObject Karakter;  //Karakter öldüüðünde anlayalým diye karakteri sahneden çýkarmak için bu deðiþkeni kullandýk. Bu kýsým daha sonra deðiþecek. You Died ekraný gelecek.
+    public GameObject mermiBir; //Silahtaki mermi sayýsý. Altta hem bunlarýn Image componentini hem de mermiyi tanýmladýk. Bunun sebebi, image ile karakter eline kamera aldýðýnda renk daha soluk bir gri olacak. Bunu bu componenti içinde barýndýran deðiþkenle yapacaðýz. GameObjectle de ateþ ediliðinde ekrandan kaybolmasýný saðlamýþ olacaðýz.
     public GameObject mermiIki;
     public GameObject mermiUc;
     public GameObject mermiDort;
     public GameObject mermiBes;
     public GameObject mermiAlti;
-    public GameObject silahSembol;
-    public GameObject kameraSembol;
-    Color deaktifColor = new Color(1f,1f,1f,0.05f);
-    Color aktifColor = new Color(25.5f, 25.5f, 25.5f, 25.5f);
-    Image silahRaw;
-    Image kameraRaw;
-    Image mermiBirRaw;
-    Image mermiIkiRaw;
-    Image mermiUcRaw;
-    Image mermiDortRaw;
-    Image mermiBesRaw;
-    Image mermiAltiRaw;
 
-    public TextMeshProUGUI hpText;
-    public TextMeshProUGUI fotoSayisi;
-    int hpInt;
+    public Image silahCross; //Silahýn niþangahý
+    public Image kameraCross;//Kameranýn niþangahý
+    
+    Color deaktifColor = new Color(1f,1f,1f,0.1f);  //Aktif ve deaktif color, arayüzdeki silah, kamera mermi gibi gri renkli bileþenlerin aktifken ve deaktifken renklerinin deðiþmesini saðlýyor.
+    Color aktifColor = new Color(1f, 1f, 1f, 1f); 
+    Color textColorAktif = new Color(0.6039216f, 0.6039216f, 0.6039216f, 1f);  //kameranýn kaç adet çekim sayýsý kaldýðýný gösteren textin rengini de bu iki deðiþkenle kontrol edeceðiz.
+    Color textColorDeaktif = new Color(0.6039216f, 0.6039216f, 0.6039216f, 0.05098039f);
+    
+
+    private Image mermiBirIM; //Kamera aldýðýnda ve tekrar silah aldýðýnda mermi simgelerinin renklerinin deðiþmesini istediðimiz için kullanacaðýmýz component.
+    private Image mermiIkýIM;
+    private Image mermiUcIM;
+    private Image mermiDortIM;
+    private Image mermiBesIM;
+    private Image mermiAltiIM;
+    public Image silahSembol;
+    public Image kameraSembol;
+    
+
+    public TextMeshProUGUI hpText;  //Karakterin canýnýn yazdýðý bileþenç
+    public TextMeshProUGUI fotoSayisi;//Fotoðraf çekme hakkýný gösteren gösterge.
+    int hpInt; //ekrana caný yazdýrýrken tür dönüþümü yapmak için kullandýðýmýz deðiþken.
+
+    float deger;//Bu deðer, karakterin canýnýn deðiþip deðiþmediðini kontrol edecek. Eðer deðiþirse, bloodFramin renginin deðiþtiði fonksiyon çalýþacak.
+    public Image bloodFrame; // Alpha deðerini deðiþtirmek istediðiniz görüntü
+
+    private float beklemeSuresi = 3f; // Geçiþ süresi (saniye)
+    private bool tetiklendiMi = false; // Geçiþ iþlemi devam ediyor mu? 
 
     void Start()
     {
         elKamerasi.SetActive(false); //12.baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler
         elindeSilahVar = true; //12.1 baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler
-        elindeKameraVar = false; //12.2 baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler
-        silahRaw = silahSembol.GetComponent<Image>();
-        kameraRaw = kameraSembol.GetComponent<Image>();
-        mermiBirRaw=mermiBir.GetComponent<Image>();
-        mermiIkiRaw=mermiIki.GetComponent<Image>();
-        mermiUcRaw=mermiUc.GetComponent<Image>();
-        mermiDortRaw=mermiDort.GetComponent<Image>();
-        mermiBesRaw=mermiBes.GetComponent<Image>();
-        mermiAltiRaw=mermiAlti.GetComponent<Image>();
-        silahRaw.color = aktifColor;
-        kameraRaw.color = deaktifColor;
-        mermiBirRaw.color = aktifColor;
-        mermiIkiRaw.color = aktifColor;
-        mermiUcRaw.color = aktifColor;
-        mermiDortRaw.color = aktifColor;
-        mermiBesRaw.color = aktifColor;
-        mermiAltiRaw.color = aktifColor;
+        elindeKameraVar = false; //12.2 baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler                                 
 
+        mermiBirIM=mermiBir.GetComponent<Image>(); //componentleri cache ettik.
+        mermiIkýIM = mermiIki.GetComponent<Image>();
+        mermiUcIM = mermiUc.GetComponent<Image>();
+        mermiDortIM = mermiDort.GetComponent<Image>();
+        mermiBesIM = mermiBes.GetComponent<Image>();
+        mermiAltiIM = mermiAlti.GetComponent<Image>();
+
+
+         mermiBirIM.color = aktifColor;  //arayüzdeki unsurlarýn baþlangýçtaki renklerini verdik.
+         mermiIkýIM.color = aktifColor;
+         mermiUcIM.color=   aktifColor;
+         mermiDortIM.color= aktifColor;
+         mermiBesIM.color=  aktifColor;
+         mermiAltiIM.color= aktifColor;
+         silahSembol.color= aktifColor;
+         kameraSembol.color=deaktifColor;
+        fotoSayisi.color = textColorDeaktif;
+
+        silahCross.gameObject.SetActive(true);  //silahla baþlayacaðýmýz için crosslarýn aktifliðini ayarladýk.
+        kameraCross.gameObject.SetActive(false);
+
+
+        deger = karakterHP; //deðeri hp ye atadýk.
+        
+
+        
     }
 
     void Update()
     {
-        hpInt = Mathf.RoundToInt(karakterHP);
+        hpInt = Mathf.RoundToInt(karakterHP);  //karakter hp yi ilgili deðiþken çevirerek atadýk.
 
-        
+        if (deger != karakterHP&&karakterHP>0)  //Bu kýsýmda, karakterin caný, deðer deðiþkenine atandýktan sonra canda deðiþim olup olmadýðýný kontrol ediyor. Eðer deðiþim varsa bloodFrame effect devreye girecek.
+        {
+            float degerIki = deger;
+            tetiklendiMi = true;
+            StartCoroutine(renkGecisi());
+            deger = karakterHP;
+           
+            if (degerIki != deger)
+            {
+                StopCoroutine(renkGecisi());
+                StartCoroutine(renkGecisi());
+            }
+            
+        }
 
         if (karakterHP <= 0)
         {
             Karakter.SetActive(false);
             hpText.text = "0";
         }
+
+        
         
         else
         {
@@ -146,15 +184,18 @@ public class KarakterAnimasyonController : MonoBehaviour
                 elindeKameraVar = true;
                 elindeSilahVar = false;
                 SilahiBirakipKamerayýTutma();
+               
+                mermiBirIM.color = deaktifColor;
+                mermiIkýIM.color = deaktifColor;
+                mermiUcIM.color = deaktifColor;
+                mermiDortIM.color = deaktifColor;
+                mermiBesIM.color = deaktifColor;
+                mermiAltiIM.color = deaktifColor;
+                silahSembol.color = deaktifColor;
+                kameraSembol.color = aktifColor;
+                fotoSayisi.color = textColorAktif;
 
-                kameraRaw.color = aktifColor;
-                silahRaw.color = deaktifColor;
-                mermiBirRaw.color = deaktifColor;
-                mermiIkiRaw.color = deaktifColor;
-                mermiUcRaw.color = deaktifColor;
-                mermiDortRaw.color = deaktifColor;
-                mermiBesRaw.color = deaktifColor;
-                mermiAltiRaw.color = deaktifColor;
+                StartCoroutine(CrossPistolToCamera());
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2) && elindeKameraVar == true) //13.1 atadýðýmýz tuþa basýldýðýnda karakter kamerayý býrakýp silahý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
@@ -163,14 +204,17 @@ public class KarakterAnimasyonController : MonoBehaviour
                 elindeKameraVar = false;
                 KamerayiBirakipSilahTutma();
 
-                kameraRaw.color = deaktifColor;
-                silahRaw.color = aktifColor;
-                mermiBirRaw.color = aktifColor;
-                mermiIkiRaw.color = aktifColor;
-                mermiUcRaw.color = aktifColor;
-                mermiDortRaw.color = aktifColor;
-                mermiBesRaw.color = aktifColor;
-                mermiAltiRaw.color = aktifColor;
+                mermiBirIM.color = aktifColor;
+                mermiIkýIM.color = aktifColor;
+                mermiUcIM.color = aktifColor;
+                mermiDortIM.color = aktifColor;
+                mermiBesIM.color = aktifColor;
+                mermiAltiIM.color = aktifColor;
+                silahSembol.color = aktifColor;
+                kameraSembol.color = deaktifColor;
+                fotoSayisi.color = textColorDeaktif;
+
+                StartCoroutine(CrossCameraToPistol());
             }
         }
 
@@ -183,6 +227,11 @@ public class KarakterAnimasyonController : MonoBehaviour
     public void HasarAl()
     {
         karakterHP -= Random.Range(10f, 20f);
+        
+    }
+    public void hasarALLight()
+    {
+        karakterHP -= Random.Range(5f, 10f);
     }
 
     void SilahiBirakipKamerayýTutma()  //6.karakterin elindeki silahý býrakýp kamerayý aldýðý sýrada gerçekleþecek olan animasyon ve iþlemleri gerçekleþtirecek fonksiyon.
@@ -224,6 +273,46 @@ public class KarakterAnimasyonController : MonoBehaviour
         elKamerasi.SetActive(true);
         pistol.SetActive(false);
     }
+    IEnumerator CrossPistolToCamera()
+    {
+        silahCross.gameObject.SetActive(false);
+        yield return new WaitForSecondsRealtime(1.6f);
+        kameraCross.gameObject.SetActive(true);
+       
+    }
+    IEnumerator CrossCameraToPistol()
+    {
+        kameraCross.gameObject.SetActive(false);
+        yield return new WaitForSecondsRealtime(1.5f);        
+        silahCross.gameObject.SetActive(true);
 
-   
+    }
+
+    IEnumerator renkGecisi() //sadasdas
+    {
+        
+        float zamanlayici = 0f;
+        Color startColor = new Color(0.5f,0.15f,0.15f,1.0f);        
+        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0f);
+        
+        bloodFrame.gameObject.SetActive(true);
+
+        while (zamanlayici < beklemeSuresi)
+        {
+            zamanlayici += Time.deltaTime;
+            float t = zamanlayici / beklemeSuresi;
+            bloodFrame.color = Color.Lerp(startColor, endColor, t);
+            yield return null;
+        }
+
+        //bloodFrame.color = endColor;
+        tetiklendiMi = false;
+
+        if (bloodFrame.color.a <= 0)
+        {
+            bloodFrame.color = startColor;
+            bloodFrame.gameObject.SetActive(false);
+        }
+    }
+    
 }

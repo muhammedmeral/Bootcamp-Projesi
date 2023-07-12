@@ -8,6 +8,7 @@ TagManager:
   - merdiven
   - enemy
   - duvar
+  - bloodFrame
   layers:
   - Default
   - TransparentFX
