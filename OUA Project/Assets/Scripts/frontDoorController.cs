@@ -15,10 +15,14 @@ public class frontDoorController : MonoBehaviour
     bool triggerdenCiktiMi = false;
     bool eTusunaBastiMi = false;
 
+    public AudioClip kapiAcilma;
+    AudioSource _auidioSource;
+
     private void Start()
     {
         pressEYazi.gameObject.SetActive(false);
         pressE.gameObject.SetActive(false);
+        _auidioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -35,7 +39,10 @@ public class frontDoorController : MonoBehaviour
             pressEYazi.gameObject.SetActive(false);
             pressE.gameObject.SetActive(false);
         }
-        
+        if (eTusunaBastiMi)
+        {
+            _auidioSource.PlayOneShot(kapiAcilma);
+        }
 
     }
 
@@ -52,6 +59,8 @@ public class frontDoorController : MonoBehaviour
             {
                 eTusunaBastiMi = true;
                 anim.SetTrigger("frontDoorTrigger");
+                 //Kapý açýlma sesi oynayacak.
+                
                 pressEYazi.gameObject.SetActive(false);
                 pressE.gameObject.SetActive(false);
                 backDoor.SetActive(false);

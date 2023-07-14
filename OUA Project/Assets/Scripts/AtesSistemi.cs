@@ -19,6 +19,7 @@ public class AtesSistemi : MonoBehaviour
     public GameObject wallObje; //22. Duvar tagýna sahip nesnelere vurduðumuzda çýkaracak prefabýmýz
     Vector3 wallKonum; //23. raycast ýþýnýnýn canavara çarptýðý pozisyonu tutacak deðiþken.
     Quaternion wallRotation; //24. raycast açýsýnýn duvar tagýna sahip nesnelere çarptýðý açý    
+    GameObject wallAtama;
 
     private AudioSource audioSource; //sesin kaynaðýný belirlemek için bileþen oluþturuldu.
     public AudioClip atesEt; //ateþ ettiðinde çýkacak ses için audioclip bileþeni oluþturuldu.
@@ -33,10 +34,15 @@ public class AtesSistemi : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && atesSiniri > 0) //2. Bu kýsýmda mouseye týkladýðýmýzda ekranda çýkacak particle effectleri kontrol edeceðiz.
         {
-            audioSource.PlayOneShot(atesEt); //ateþ ettiðimizde çýkan sesin oynatýlmasý saðlandý.
+            if (atesSiniri == 6)
+            {
+                audioSource.PlayOneShot(atesEt); //ateþ ettiðimizde çýkan sesin oynatýlmasý saðlandý.
+            }
+            
             if (Time.time - sonTiklama > tiklamaBeklemeSuresi)
             {
                 AtesEt(); //4. Burada ateþ etme iþlemimiz gerçekleþiyor.
+                audioSource.PlayOneShot(atesEt);
                 StartCoroutine(muzzleBekleme());//11. Burada muzzle effect çalýþýyor.
                 atesSiniri--;
                 sonTiklama = Time.time; //10. Son týklama zamaný ile ilgili deðiþkeni güncelliyoruz.
@@ -66,11 +72,12 @@ public class AtesSistemi : MonoBehaviour
                 {
                     wallKonum = hit.point; //26. ýþýnýn konumunu ilgili deðiþkene atadýk.
                     wallRotation = Quaternion.LookRotation(hit.normal);//27. ýþýnýn rotasyonunu ilgili deðiþkene atadýk.
-                    if (wallObje != null)
+                    if (wallAtama != null)
                     {
-                        Destroy(wallObje); //28. Önce, daha önce bir obje varsa onu yok ettik ki nullreferance hatasý almayalým diye.
+                        Destroy(wallAtama); //28. Önce, daha önce bir obje varsa onu yok ettik ki nullreferance hatasý almayalým diye.
                     }
-                    wallObje = Instantiate(wallObje, wallKonum, wallRotation); //29. Ardýndan da yeni bir obje ürettik.                    
+
+                    wallAtama = Instantiate(wallObje, wallKonum, wallRotation); //29. Ardýndan da yeni bir obje ürettik.                    
 
                 }
 

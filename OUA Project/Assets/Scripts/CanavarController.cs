@@ -21,6 +21,8 @@ public class CanavarController : MonoBehaviour
     public AudioClip attack2; //canavar karaktere saldýrdýðýnda kullanýlacak ses için audioclip bileþeni oluþturuldu.
     public AudioClip yaralanma; //canavar hasar aldýðýnda kullanýlacak ses için audioclip bileþeni oluþturuldu.
 
+    bool kukrediMi = false;
+
     private void Start()
     {
 
@@ -35,7 +37,7 @@ public class CanavarController : MonoBehaviour
 
         if (canavarHp <= 0)
         {
-            this.canavarCollider.isTrigger=true;
+            this.canavarCollider.isTrigger = true;
 
             deger++;
             if (deger == 1)
@@ -117,11 +119,15 @@ public class CanavarController : MonoBehaviour
 
     void walkToRun() //8. Bu fonksiyonda, canavar yürürken, koþma durumuna geçecek.
     {
-        anim.SetBool("isWalk", false);
-        anim.SetTrigger("walkToIddle");
-        //Bu kýsýmda canavarýn kükreme ses efekti kullanýlacak.
-        StartCoroutine(IddleBekleme());
-        anim.SetBool("isRun", true);
+        if (!kukrediMi){
+            anim.SetBool("isWalk", false);
+            anim.SetTrigger("walkToIddle");
+            //Bu kýsýmda canavarýn kükreme ses efekti kullanýlacak.
+            StartCoroutine(IddleBekleme());
+            anim.SetBool("isRun", true);
+            kukrediMi = true;
+        }
+        
 
     }
 
@@ -129,7 +135,8 @@ public class CanavarController : MonoBehaviour
     {
         anim.SetBool("isRun", false);
         anim.SetBool("isWalk", true);
-
+        kukrediMi = false;
+        
     }
 
 

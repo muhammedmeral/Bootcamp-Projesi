@@ -9,14 +9,16 @@ public class KarakterHareketleri : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip yurume;
-   
+    //public AudioClip hafifYurume;++
 
+    bool yavasladiMi = false; //karakterin shifte basýp basmadýðýný kontrol edecek deðiþken. eðer basarsa, yürüme ses deðiþecek.
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>(); //3.karakterin hareketini Rigidbody bileþeni üzerinden kontrol etmek için rb deðiþkeni kullanýldý. 
         audioSource = GetComponent<AudioSource>();
+
     }
 
     private void FixedUpdate()
@@ -30,16 +32,36 @@ public class KarakterHareketleri : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            yavasladiMi = true;
             hareketHizi = 0.65f;
         }
         else
-            hareketHizi = 1.25f;
-
-        if (yatay!=0 || dikey != 0)
         {
-            audioSource.PlayOneShot(yurume);
-           
+            hareketHizi = 1.25f;
+            yavasladiMi = false;
         }
+            
+
+        if (yatay != 0 || dikey != 0&&yavasladiMi==false)  //Bu kýsýma normal yürüme sesi eklenecek.
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(yurume);
+            }
+
+
+        }
+        //else if (yatay != 0 || dikey != 0 && yavasladiMi == true)  //Bu kýsýma yavaþ yürüme sesi eklenecek.
+        //{
+        //    if (!audioSource.isPlaying)
+        //    {
+        //        audioSource.PlayOneShot(hafifYurume);
+        //    }
+
+
+        //}
+        else
+            audioSource.Stop();
 
 
 
