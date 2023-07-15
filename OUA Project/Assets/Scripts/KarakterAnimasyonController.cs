@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class KarakterAnimasyonController : MonoBehaviour
 {
+   
     //crosshair birden fazla fonksiyonun içinde kullanýlacak(silah tutma,ateþ etme, kamera tutma,fotoðraf çekme vs.) unutma!!!!
 
     public Animator anim; //1.Animator bileþeninden anim isimli bir nesne oluþturuldu.
@@ -51,12 +52,18 @@ public class KarakterAnimasyonController : MonoBehaviour
     float deger;//Bu deðer, karakterin canýnýn deðiþip deðiþmediðini kontrol edecek. Eðer deðiþirse, bloodFramin renginin deðiþtiði fonksiyon çalýþacak.
     public Image bloodFrame; // Alpha deðerini deðiþtirmek istediðiniz görüntü
 
-    private float beklemeSuresi = 3f; // Geçiþ süresi (saniye)
+    private float beklemeSuresi = 3.7f; // Geçiþ süresi (saniye)
     private bool tetiklendiMi = false; // Geçiþ iþlemi devam ediyor mu? 
 
     private AudioSource audioSource; //ses kaynaðýný belirlemek için bir bileþen oluþturuldu.
-    public AudioClip yaralanma; //karakter hasar aldýðýnda kullanýlacak ses için bir audioclip bileþeni oluþturuldu.
+    public AudioSource auSource; //Kalp atýþýný tutacak component.
+    public AudioClip[] yaralanma; //karakter hasar aldýðýnda kullanýlacak ses için bir audioclip bileþeni oluþturuldu.
     public AudioClip silahAl; //karakter silahý aldýðýnda kullanýlacak ses için bir audioclip bileþeni oluþturuldu.
+    public AudioClip kalpSesi; //Karakter hasar aldýðýnda anlýk olarak çýkacak kalp sesi.
+    public AudioClip kameraCekme;
+   
+
+    int lightAttackSayisi = 0;//Karakterin yediði attack1 yani light attack sayýsýný tutacak deðiþken. 0'sa veya 2'nin katlarýysa hasar alma sesi çalacak.
 
     void Start()
     {
@@ -106,7 +113,7 @@ public class KarakterAnimasyonController : MonoBehaviour
             if (degerIki != deger)
             {
                 StopCoroutine(renkGecisi());
-                StartCoroutine(renkGecisi());
+                //StartCoroutine(renkGecisi());
             }
             
         }
@@ -232,13 +239,20 @@ public class KarakterAnimasyonController : MonoBehaviour
     public void HasarAl()
     {
         karakterHP -= Random.Range(10f, 20f);
-        audioSource.PlayOneShot(yaralanma); //karakter hasar aldýðýnda çýkacak sesin oynatýlmasý saðlandý.
+        //audioSource.PlayOneShot(yaralanma); //karakter hasar aldýðýnda çýkacak sesin oynatýlmasý saðlandý.
+        yaralanmaSesi();
         
     }
     public void hasarALLight()
     {
+        
         karakterHP -= Random.Range(5f, 10f);
-        audioSource.PlayOneShot(yaralanma); //karakter hasar aldýðýnda çýkacak sesin oynatýlmasý saðlandý.
+        //audioSource.PlayOneShot(yaralanma); //karakter hasar aldýðýnda çýkacak sesin oynatýlmasý saðlandý.
+        if (lightAttackSayisi == 0 || lightAttackSayisi % 2 == 0) 
+        { 
+            yaralanmaSesiLight();
+        }
+        lightAttackSayisi++;
     }
 
     void SilahiBirakipKamerayýTutma()  //6.karakterin elindeki silahý býrakýp kamerayý aldýðý sýrada gerçekleþecek olan animasyon ve iþlemleri gerçekleþtirecek fonksiyon.
@@ -246,6 +260,7 @@ public class KarakterAnimasyonController : MonoBehaviour
         anim.SetTrigger("silahTutarkenBirakma");
         StartCoroutine(KameraAlmaBekletme()); //7.bu yapýyý kullanma sebebimiz nesne görünürlüklerinin animasyonlardan önce çalýþmasýndan dolayý oluþan çarpýk görüntünün önüne geçmek.
         anim.SetTrigger("silahBirakirkenKameraAlma");
+        StartCoroutine(kameraCekmeSesi());
         anim.SetTrigger("kameraAlirkenTutma");
     }
 
@@ -259,7 +274,7 @@ public class KarakterAnimasyonController : MonoBehaviour
         anim.SetTrigger("kameraTutarkenBirakma");
         StartCoroutine(SilahAlmaBekletme());
         anim.SetTrigger("kameraBirakirkenSilahAlma");
-        audioSource.PlayOneShot(silahAl); //silahý alýrken çýkan sesin oynatýlmasý saðlandý.
+        StartCoroutine(silahCekmeSesi());
         anim.SetTrigger("silahAlirkenTutma");
     }
 
@@ -305,6 +320,13 @@ public class KarakterAnimasyonController : MonoBehaviour
         
         bloodFrame.gameObject.SetActive(true);
 
+        if (!auSource.isPlaying)
+        {
+            auSource.PlayOneShot(kalpSesi);
+        }
+            
+        
+
         while (zamanlayici < beklemeSuresi)
         {
             zamanlayici += Time.deltaTime;
@@ -320,7 +342,31 @@ public class KarakterAnimasyonController : MonoBehaviour
         {
             bloodFrame.color = startColor;
             bloodFrame.gameObject.SetActive(false);
+            auSource.Stop();
+            
         }
     }
+    void yaralanmaSesiLight() //Karakter attack1 yedikten sonra çalacak ses efekti.
+    {
+
+        audioSource.PlayOneShot(yaralanma[0]);
+
+    }
+    void yaralanmaSesi() //karakterin attack2 yedikten sonra çalacak ses efekti
+    {
+        
+        audioSource.PlayOneShot(yaralanma[1]);
+        
+    }
     
+    IEnumerator silahCekmeSesi() //karakterin kamerayý býrakýp silahý alýrken çalacak ses efekti
+    {
+        yield return new WaitForSecondsRealtime(0.8f);
+        audioSource.PlayOneShot(silahAl); //silahý alýrken çýkan sesin oynatýlmasý saðlandý.
+    }
+    IEnumerator kameraCekmeSesi()// karakterin silahý býrakýp kamerayý alýrken çalacak ses efekti
+    {
+        yield return new WaitForSecondsRealtime(0.7f);
+        audioSource.PlayOneShot(kameraCekme);
+    }
 }

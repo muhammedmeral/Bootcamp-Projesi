@@ -17,6 +17,9 @@ public class FotoCekme : MonoBehaviour
 
     private AudioSource audioSource; //sesin kaynaðýný belirlemek için bir bileþen oluþturuldu.
     public AudioClip fotoCek; //foto çektiðinde çýkan sesi kullanmak için audioclip bileþeni oluþturuldu.
+    public AudioClip bosKameraSesi;
+    float sonTiklama;
+    float tiklamaBeklemeSuresi = 0.65f;
 
     
     private void Start()
@@ -30,11 +33,37 @@ public class FotoCekme : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0) && fotoCekmeLimiti > 0)
         {
-            CanavariFotoCek();
-            audioSource.PlayOneShot(fotoCek); //fotoðraf çekme sesinin oynatýlmasý saðlandý.
+            if (Time.time - sonTiklama > tiklamaBeklemeSuresi)
+            {
+                CanavariFotoCek();
+                audioSource.PlayOneShot(fotoCek); //fotoðraf çekme sesinin oynatýlmasý saðlandý.
+
+                Kaydet();
+                fotoCekmeLimiti--;
+                sonTiklama = Time.time;
+            }
             
-            Kaydet();
-            fotoCekmeLimiti--;
+        }
+        else if (Input.GetMouseButtonDown(0) && fotoCekmeLimiti <= 0)
+        {
+            if (fotoCekmeLimiti == 0)
+            {
+                if (audioSource.isPlaying == false)
+                {
+                    BosKameraSesi();
+                }
+            }
+            else if (Time.time - sonTiklama > tiklamaBeklemeSuresi)
+            {
+                //çalacak ses eklenecek
+
+                if (audioSource.isPlaying == false)
+                { 
+                    BosKameraSesi();
+                }
+                
+                sonTiklama = Time.time;
+            }
         }
 
         TumFotograflariGoster();
@@ -101,5 +130,10 @@ public class FotoCekme : MonoBehaviour
             string dosyaYolu = Application.persistentDataPath + "/foto" + (i + 1) + ".png";
             System.IO.File.WriteAllBytes(dosyaYolu, fotoBytes);
         }
+    }
+
+    public void BosKameraSesi() //foto hakký dolduðunda çalacak ses efekti.
+    {
+        audioSource.PlayOneShot(bosKameraSesi);
     }
 }

@@ -23,6 +23,7 @@ public class AtesSistemi : MonoBehaviour
 
     private AudioSource audioSource; //sesin kaynaðýný belirlemek için bileþen oluþturuldu.
     public AudioClip atesEt; //ateþ ettiðinde çýkacak ses için audioclip bileþeni oluþturuldu.
+    public AudioClip bosSilahSesi;
 
     void Start()
     {
@@ -46,6 +47,20 @@ public class AtesSistemi : MonoBehaviour
                 StartCoroutine(muzzleBekleme());//11. Burada muzzle effect çalýþýyor.
                 atesSiniri--;
                 sonTiklama = Time.time; //10. Son týklama zamaný ile ilgili deðiþkeni güncelliyoruz.
+            }
+        }
+        else if (Input.GetMouseButtonDown(0) && atesSiniri <= 0)
+        {
+            if (atesSiniri == 0)
+            {
+                BosSilahSesi();
+                //çalacak ses eklenecek.
+            }
+            else if(Time.time-sonTiklama>tiklamaBeklemeSuresi)
+            {
+                //çalacak ses eklenecek
+                BosSilahSesi();
+                sonTiklama = Time.time;
             }
         }
 
@@ -91,5 +106,10 @@ public class AtesSistemi : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.2f);
         muzzleEffect.Play();
+    }
+
+    void BosSilahSesi()
+    {
+        audioSource.PlayOneShot(bosSilahSesi);
     }
 }

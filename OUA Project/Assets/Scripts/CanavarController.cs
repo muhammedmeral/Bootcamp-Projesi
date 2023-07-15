@@ -16,12 +16,13 @@ public class CanavarController : MonoBehaviour
     BoxCollider canavarCollider;
 
     private AudioSource audioSource; //sesin kaynaðýný belirlemek için bileþen oluþturuldu.
+    public AudioSource auSource;
     public AudioClip olme; //canavar öldüðünde kullanýlacak ses için audioclip bileþeni oluþturuldu.
     public AudioClip attack1; //canavar karaktere saldýrdýðýnda kullanýlacak ses için audioclip bileþeni oluþturuldu.
     public AudioClip attack2; //canavar karaktere saldýrdýðýnda kullanýlacak ses için audioclip bileþeni oluþturuldu.
-    public AudioClip yaralanma; //canavar hasar aldýðýnda kullanýlacak ses için audioclip bileþeni oluþturuldu.
+    public AudioClip[] yaralanma; //canavar hasar aldýðýnda kullanýlacak ses için audioclip bileþeni oluþturuldu.
 
-    bool kukrediMi = false;
+    //bool kukrediMi = false;
 
     private void Start()
     {
@@ -38,13 +39,15 @@ public class CanavarController : MonoBehaviour
         if (canavarHp <= 0)
         {
             this.canavarCollider.isTrigger = true;
-
+            audioSource.Stop();
+            audioSource.PlayOneShot(olme); //canavar öldüðünde çýkacak sesin oynatýlmasý saðlandý.
             deger++;
             if (deger == 1)
             {
                 anim.SetTrigger("death");
                 nmesh.isStopped = true;
-                audioSource.PlayOneShot(olme); //canavar öldüðünde çýkacak sesin oynatýlmasý saðlandý.
+                //audioSource.Stop();
+                //audioSource.PlayOneShot(olme); //canavar öldüðünde çýkacak sesin oynatýlmasý saðlandý.
 
             }
 
@@ -95,7 +98,8 @@ public class CanavarController : MonoBehaviour
     public void HasarAl()
     {
         canavarHp -= Random.Range(20, 30);
-        audioSource.PlayOneShot(yaralanma); //karakter canavara hasar verdiðinde çýkacak olan sesin oynatýlmasý saðlandý.
+        //audioSource.PlayOneShot(yaralanma); //karakter canavara hasar verdiðinde çýkacak olan sesin oynatýlmasý saðlandý.
+        yaralanmaSesi();
     }
 
     public void HasarVer()
@@ -119,14 +123,14 @@ public class CanavarController : MonoBehaviour
 
     void walkToRun() //8. Bu fonksiyonda, canavar yürürken, koþma durumuna geçecek.
     {
-        if (!kukrediMi){
+        //if (!kukrediMi){
             anim.SetBool("isWalk", false);
             anim.SetTrigger("walkToIddle");
             //Bu kýsýmda canavarýn kükreme ses efekti kullanýlacak.
             StartCoroutine(IddleBekleme());
             anim.SetBool("isRun", true);
-            kukrediMi = true;
-        }
+            //kukrediMi = true;
+        //}
         
 
     }
@@ -135,7 +139,7 @@ public class CanavarController : MonoBehaviour
     {
         anim.SetBool("isRun", false);
         anim.SetBool("isWalk", true);
-        kukrediMi = false;
+        //kukrediMi = false;
         
     }
 
@@ -148,4 +152,13 @@ public class CanavarController : MonoBehaviour
 
     }
 
+    void yaralanmaSesi()
+    {
+        int indexNo = Random.Range(0,7);
+        if (/*!auSource.isPlaying&&*/canavarHp>0)
+        {
+            auSource.PlayOneShot(yaralanma[indexNo]);
+        }
+        
+    }
 }
