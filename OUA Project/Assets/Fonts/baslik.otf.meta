@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: eb17de4a2b1d9024e892457b6c18334b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Shlop
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: da4503e673b988a4b8ac4236eb4f6c8f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

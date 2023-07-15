@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FotoCekme : MonoBehaviour
 {
     public Camera fotoCekmeKamerasi;
-    public List<RawImage> fotoGostericiler; // Birden fazla Raw Image için liste tanýmladýk
+    public List<RawImage> fotoGostericiler; // Birden fazla Raw Image iï¿½in liste tanï¿½mladï¿½k
     private List<Texture2D> fotoTextureList;
     int fotoCekmeLimiti = 3;
 
@@ -15,8 +15,8 @@ public class FotoCekme : MonoBehaviour
     public GameObject canavar;
     public Camera anaKamera;
 
-    private AudioSource audioSource; //sesin kaynaðýný belirlemek için bir bileþen oluþturuldu.
-    public AudioClip fotoCek; //foto çektiðinde çýkan sesi kullanmak için audioclip bileþeni oluþturuldu.
+    private AudioSource audioSource; //sesin kaynaï¿½ï¿½nï¿½ belirlemek iï¿½in bir bileï¿½en oluï¿½turuldu.
+    public AudioClip fotoCek; //foto ï¿½ektiï¿½inde ï¿½ï¿½kan sesi kullanmak iï¿½in audioclip bileï¿½eni oluï¿½turuldu.
     public AudioClip bosKameraSesi;
     float sonTiklama;
     float tiklamaBeklemeSuresi = 0.65f;
@@ -36,7 +36,7 @@ public class FotoCekme : MonoBehaviour
             if (Time.time - sonTiklama > tiklamaBeklemeSuresi)
             {
                 CanavariFotoCek();
-                audioSource.PlayOneShot(fotoCek); //fotoðraf çekme sesinin oynatýlmasý saðlandý.
+                audioSource.PlayOneShot(fotoCek); //fotoï¿½raf ï¿½ekme sesinin oynatï¿½lmasï¿½ saï¿½landï¿½.
 
                 Kaydet();
                 fotoCekmeLimiti--;
@@ -55,7 +55,7 @@ public class FotoCekme : MonoBehaviour
             }
             else if (Time.time - sonTiklama > tiklamaBeklemeSuresi)
             {
-                //çalacak ses eklenecek
+                //ï¿½alacak ses eklenecek
 
                 if (audioSource.isPlaying == false)
                 { 
@@ -109,7 +109,7 @@ public class FotoCekme : MonoBehaviour
         }
     }
 
-    public void TumFotograflariGoster()   //Bu kýsým arayüz iþinden sonra silinecek.
+    public void TumFotograflariGoster()   //Bu kï¿½sï¿½m arayï¿½z iï¿½inden sonra silinecek.
     {
         for (int i = 0; i < fotoTextureList.Count; i++)
         {
@@ -132,8 +132,18 @@ public class FotoCekme : MonoBehaviour
         }
     }
 
-    public void BosKameraSesi() //foto hakký dolduðunda çalacak ses efekti.
+    public void BosKameraSesi() //foto hakkï¿½ dolduï¿½unda ï¿½alacak ses efekti.
     {
         audioSource.PlayOneShot(bosKameraSesi);
     }
+    public static Texture2D FotoyuYukle(string dosyaYolu)
+    {
+        byte[] fotoBytes = System.IO.File.ReadAllBytes(dosyaYolu);
+        Texture2D yuklenenFoto = new Texture2D(2,2); // Yï¿½klenen fotoï¿½rafï¿½n boyutunu belirleyin.
+        yuklenenFoto.LoadImage(fotoBytes);
+        return yuklenenFoto;
+    }
+
+
+
 }

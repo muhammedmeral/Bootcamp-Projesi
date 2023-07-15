@@ -6,37 +6,37 @@ using TMPro;
 public class KarakterAnimasyonController : MonoBehaviour
 {
    
-    //crosshair birden fazla fonksiyonun içinde kullanýlacak(silah tutma,ateþ etme, kamera tutma,fotoðraf çekme vs.) unutma!!!!
+    //crosshair birden fazla fonksiyonun iï¿½inde kullanï¿½lacak(silah tutma,ateï¿½ etme, kamera tutma,fotoï¿½raf ï¿½ekme vs.) unutma!!!!
 
-    public Animator anim; //1.Animator bileþeninden anim isimli bir nesne oluþturuldu.
-    public GameObject elKamerasi; //2.karakterin elindeki kamerayý animasyonlar sýrasýnda açýp kapatmak için kullandýðýmýz deðiþken.
-    public GameObject pistol; //3.karakterin elindeki pistolü animasyonlar sýrasýnda açýp kapatmak için kullandýðýmýz deðiþken.
-    bool elindeSilahVar = true; //4.karakterin elindeki nesneden diðer nesnelere geçiþte animasyon çakýþmasý olmamasý için kullandýðýmýz deðiþken.
-    bool elindeKameraVar = false; //5.karakterin elindeki nesneden diðer nesnelere geçiþte animasyon çakýþmasý olmamasý için kullandýðýmýz deðiþken.
-    float atesLimiti = 6f; //16. Ateþ etme animasyonunu limitleyen deðiþken
-    float fotografLimiti = 3f; //16.1 Fotoðraf çekme animasyonunu limitleyen deðiþken.
-    float sonTiklama; //17. Son ateþ etme süresini tutacak deðiþken.
-    float tiklamaBeklemeSuresi = 0.65f;//18. Ateþ etme ve fotoðraf çekme animasyonlarýnýn bekleme süresini sýnýrlayan deðiþken.
-    public float karakterHP = 100f;
-    public GameObject Karakter;  //Karakter öldüüðünde anlayalým diye karakteri sahneden çýkarmak için bu deðiþkeni kullandýk. Bu kýsým daha sonra deðiþecek. You Died ekraný gelecek.
-    public GameObject mermiBir; //Silahtaki mermi sayýsý. Altta hem bunlarýn Image componentini hem de mermiyi tanýmladýk. Bunun sebebi, image ile karakter eline kamera aldýðýnda renk daha soluk bir gri olacak. Bunu bu componenti içinde barýndýran deðiþkenle yapacaðýz. GameObjectle de ateþ ediliðinde ekrandan kaybolmasýný saðlamýþ olacaðýz.
+    public Animator anim; //1.Animator bileï¿½eninden anim isimli bir nesne oluï¿½turuldu.
+    public GameObject elKamerasi; //2.karakterin elindeki kamerayï¿½ animasyonlar sï¿½rasï¿½nda aï¿½ï¿½p kapatmak iï¿½in kullandï¿½ï¿½ï¿½mï¿½z deï¿½iï¿½ken.
+    public GameObject pistol; //3.karakterin elindeki pistolï¿½ animasyonlar sï¿½rasï¿½nda aï¿½ï¿½p kapatmak iï¿½in kullandï¿½ï¿½ï¿½mï¿½z deï¿½iï¿½ken.
+    bool elindeSilahVar = true; //4.karakterin elindeki nesneden diï¿½er nesnelere geï¿½iï¿½te animasyon ï¿½akï¿½ï¿½masï¿½ olmamasï¿½ iï¿½in kullandï¿½ï¿½ï¿½mï¿½z deï¿½iï¿½ken.
+    bool elindeKameraVar = false; //5.karakterin elindeki nesneden diï¿½er nesnelere geï¿½iï¿½te animasyon ï¿½akï¿½ï¿½masï¿½ olmamasï¿½ iï¿½in kullandï¿½ï¿½ï¿½mï¿½z deï¿½iï¿½ken.
+    float atesLimiti = 6f; //16. Ateï¿½ etme animasyonunu limitleyen deï¿½iï¿½ken
+    float fotografLimiti = 3f; //16.1 Fotoï¿½raf ï¿½ekme animasyonunu limitleyen deï¿½iï¿½ken.
+    float sonTiklama; //17. Son ateï¿½ etme sï¿½resini tutacak deï¿½iï¿½ken.
+    float tiklamaBeklemeSuresi = 0.65f;//18. Ateï¿½ etme ve fotoï¿½raf ï¿½ekme animasyonlarï¿½nï¿½n bekleme sï¿½resini sï¿½nï¿½rlayan deï¿½iï¿½ken.
+    public static float karakterHP = 100f;
+    public GameObject Karakter;  //Karakter ï¿½ldï¿½ï¿½ï¿½ï¿½nde anlayalï¿½m diye karakteri sahneden ï¿½ï¿½karmak iï¿½in bu deï¿½iï¿½keni kullandï¿½k. Bu kï¿½sï¿½m daha sonra deï¿½iï¿½ecek. You Died ekranï¿½ gelecek.
+    public GameObject mermiBir; //Silahtaki mermi sayï¿½sï¿½. Altta hem bunlarï¿½n Image componentini hem de mermiyi tanï¿½mladï¿½k. Bunun sebebi, image ile karakter eline kamera aldï¿½ï¿½ï¿½nda renk daha soluk bir gri olacak. Bunu bu componenti iï¿½inde barï¿½ndï¿½ran deï¿½iï¿½kenle yapacaï¿½ï¿½z. GameObjectle de ateï¿½ ediliï¿½inde ekrandan kaybolmasï¿½nï¿½ saï¿½lamï¿½ï¿½ olacaï¿½ï¿½z.
     public GameObject mermiIki;
     public GameObject mermiUc;
     public GameObject mermiDort;
     public GameObject mermiBes;
     public GameObject mermiAlti;
 
-    public Image silahCross; //Silahýn niþangahý
-    public Image kameraCross;//Kameranýn niþangahý
+    public Image silahCross; //Silahï¿½n niï¿½angahï¿½
+    public Image kameraCross;//Kameranï¿½n niï¿½angahï¿½
     
-    Color deaktifColor = new Color(1f,1f,1f,0.1f);  //Aktif ve deaktif color, arayüzdeki silah, kamera mermi gibi gri renkli bileþenlerin aktifken ve deaktifken renklerinin deðiþmesini saðlýyor.
+    Color deaktifColor = new Color(1f,1f,1f,0.1f);  //Aktif ve deaktif color, arayï¿½zdeki silah, kamera mermi gibi gri renkli bileï¿½enlerin aktifken ve deaktifken renklerinin deï¿½iï¿½mesini saï¿½lï¿½yor.
     Color aktifColor = new Color(1f, 1f, 1f, 1f); 
-    Color textColorAktif = new Color(0.6039216f, 0.6039216f, 0.6039216f, 1f);  //kameranýn kaç adet çekim sayýsý kaldýðýný gösteren textin rengini de bu iki deðiþkenle kontrol edeceðiz.
+    Color textColorAktif = new Color(0.6039216f, 0.6039216f, 0.6039216f, 1f);  //kameranï¿½n kaï¿½ adet ï¿½ekim sayï¿½sï¿½ kaldï¿½ï¿½ï¿½nï¿½ gï¿½steren textin rengini de bu iki deï¿½iï¿½kenle kontrol edeceï¿½iz.
     Color textColorDeaktif = new Color(0.6039216f, 0.6039216f, 0.6039216f, 0.05098039f);
     
 
-    private Image mermiBirIM; //Kamera aldýðýnda ve tekrar silah aldýðýnda mermi simgelerinin renklerinin deðiþmesini istediðimiz için kullanacaðýmýz component.
-    private Image mermiIkýIM;
+    private Image mermiBirIM; //Kamera aldï¿½ï¿½ï¿½nda ve tekrar silah aldï¿½ï¿½ï¿½nda mermi simgelerinin renklerinin deï¿½iï¿½mesini istediï¿½imiz iï¿½in kullanacaï¿½ï¿½mï¿½z component.
+    private Image mermiIkï¿½IM;
     private Image mermiUcIM;
     private Image mermiDortIM;
     private Image mermiBesIM;
@@ -45,42 +45,42 @@ public class KarakterAnimasyonController : MonoBehaviour
     public Image kameraSembol;
     
 
-    public TextMeshProUGUI hpText;  //Karakterin canýnýn yazdýðý bileþenç
-    public TextMeshProUGUI fotoSayisi;//Fotoðraf çekme hakkýný gösteren gösterge.
-    int hpInt; //ekrana caný yazdýrýrken tür dönüþümü yapmak için kullandýðýmýz deðiþken.
+    public TextMeshProUGUI hpText;  //Karakterin canï¿½nï¿½n yazdï¿½ï¿½ï¿½ bileï¿½enï¿½
+    public TextMeshProUGUI fotoSayisi;//Fotoï¿½raf ï¿½ekme hakkï¿½nï¿½ gï¿½steren gï¿½sterge.
+    int hpInt; //ekrana canï¿½ yazdï¿½rï¿½rken tï¿½r dï¿½nï¿½ï¿½ï¿½mï¿½ yapmak iï¿½in kullandï¿½ï¿½ï¿½mï¿½z deï¿½iï¿½ken.
 
-    float deger;//Bu deðer, karakterin canýnýn deðiþip deðiþmediðini kontrol edecek. Eðer deðiþirse, bloodFramin renginin deðiþtiði fonksiyon çalýþacak.
-    public Image bloodFrame; // Alpha deðerini deðiþtirmek istediðiniz görüntü
+    float deger;//Bu deï¿½er, karakterin canï¿½nï¿½n deï¿½iï¿½ip deï¿½iï¿½mediï¿½ini kontrol edecek. Eï¿½er deï¿½iï¿½irse, bloodFramin renginin deï¿½iï¿½tiï¿½i fonksiyon ï¿½alï¿½ï¿½acak.
+    public Image bloodFrame; // Alpha deï¿½erini deï¿½iï¿½tirmek istediï¿½iniz gï¿½rï¿½ntï¿½
 
-    private float beklemeSuresi = 3.7f; // Geçiþ süresi (saniye)
-    private bool tetiklendiMi = false; // Geçiþ iþlemi devam ediyor mu? 
+    private float beklemeSuresi = 3.7f; // Geï¿½iï¿½ sï¿½resi (saniye)
+    private bool tetiklendiMi = false; // Geï¿½iï¿½ iï¿½lemi devam ediyor mu? 
 
-    private AudioSource audioSource; //ses kaynaðýný belirlemek için bir bileþen oluþturuldu.
-    public AudioSource auSource; //Kalp atýþýný tutacak component.
-    public AudioClip[] yaralanma; //karakter hasar aldýðýnda kullanýlacak ses için bir audioclip bileþeni oluþturuldu.
-    public AudioClip silahAl; //karakter silahý aldýðýnda kullanýlacak ses için bir audioclip bileþeni oluþturuldu.
-    public AudioClip kalpSesi; //Karakter hasar aldýðýnda anlýk olarak çýkacak kalp sesi.
+    private AudioSource audioSource; //ses kaynaï¿½ï¿½nï¿½ belirlemek iï¿½in bir bileï¿½en oluï¿½turuldu.
+    public AudioSource auSource; //Kalp atï¿½ï¿½ï¿½nï¿½ tutacak component.
+    public AudioClip[] yaralanma; //karakter hasar aldï¿½ï¿½ï¿½nda kullanï¿½lacak ses iï¿½in bir audioclip bileï¿½eni oluï¿½turuldu.
+    public AudioClip silahAl; //karakter silahï¿½ aldï¿½ï¿½ï¿½nda kullanï¿½lacak ses iï¿½in bir audioclip bileï¿½eni oluï¿½turuldu.
+    public AudioClip kalpSesi; //Karakter hasar aldï¿½ï¿½ï¿½nda anlï¿½k olarak ï¿½ï¿½kacak kalp sesi.
     public AudioClip kameraCekme;
    
 
-    int lightAttackSayisi = 0;//Karakterin yediði attack1 yani light attack sayýsýný tutacak deðiþken. 0'sa veya 2'nin katlarýysa hasar alma sesi çalacak.
+    int lightAttackSayisi = 0;//Karakterin yediï¿½i attack1 yani light attack sayï¿½sï¿½nï¿½ tutacak deï¿½iï¿½ken. 0'sa veya 2'nin katlarï¿½ysa hasar alma sesi ï¿½alacak.
 
     void Start()
     {
-        elKamerasi.SetActive(false); //12.baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler
-        elindeSilahVar = true; //12.1 baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler
-        elindeKameraVar = false; //12.2 baþlangýçta olmasýný istediðimiz durumlarý saðlamak için(elinde silah olmasý, silahýn görünür olmasý vs.) atadýðýmýz deðerler                                 
+        elKamerasi.SetActive(false); //12.baï¿½langï¿½ï¿½ta olmasï¿½nï¿½ istediï¿½imiz durumlarï¿½ saï¿½lamak iï¿½in(elinde silah olmasï¿½, silahï¿½n gï¿½rï¿½nï¿½r olmasï¿½ vs.) atadï¿½ï¿½ï¿½mï¿½z deï¿½erler
+        elindeSilahVar = true; //12.1 baï¿½langï¿½ï¿½ta olmasï¿½nï¿½ istediï¿½imiz durumlarï¿½ saï¿½lamak iï¿½in(elinde silah olmasï¿½, silahï¿½n gï¿½rï¿½nï¿½r olmasï¿½ vs.) atadï¿½ï¿½ï¿½mï¿½z deï¿½erler
+        elindeKameraVar = false; //12.2 baï¿½langï¿½ï¿½ta olmasï¿½nï¿½ istediï¿½imiz durumlarï¿½ saï¿½lamak iï¿½in(elinde silah olmasï¿½, silahï¿½n gï¿½rï¿½nï¿½r olmasï¿½ vs.) atadï¿½ï¿½ï¿½mï¿½z deï¿½erler                                 
 
         mermiBirIM=mermiBir.GetComponent<Image>(); //componentleri cache ettik.
-        mermiIkýIM = mermiIki.GetComponent<Image>();
+        mermiIkï¿½IM = mermiIki.GetComponent<Image>();
         mermiUcIM = mermiUc.GetComponent<Image>();
         mermiDortIM = mermiDort.GetComponent<Image>();
         mermiBesIM = mermiBes.GetComponent<Image>();
         mermiAltiIM = mermiAlti.GetComponent<Image>();
 
 
-        mermiBirIM.color = aktifColor;  //arayüzdeki unsurlarýn baþlangýçtaki renklerini verdik.
-        mermiIkýIM.color = aktifColor;
+        mermiBirIM.color = aktifColor;  //arayï¿½zdeki unsurlarï¿½n baï¿½langï¿½ï¿½taki renklerini verdik.
+        mermiIkï¿½IM.color = aktifColor;
         mermiUcIM.color=   aktifColor;
         mermiDortIM.color= aktifColor;
         mermiBesIM.color=  aktifColor;
@@ -89,21 +89,26 @@ public class KarakterAnimasyonController : MonoBehaviour
         kameraSembol.color=deaktifColor;
         fotoSayisi.color = textColorDeaktif;
 
-        silahCross.gameObject.SetActive(true);  //silahla baþlayacaðýmýz için crosslarýn aktifliðini ayarladýk.
+        silahCross.gameObject.SetActive(true);  //silahla baï¿½layacaï¿½ï¿½mï¿½z iï¿½in crosslarï¿½n aktifliï¿½ini ayarladï¿½k.
         kameraCross.gameObject.SetActive(false);
 
 
-        deger = karakterHP; //deðeri hp ye atadýk.
+         
 
         audioSource = GetComponent<AudioSource>(); //audiosource compenenti cache edildi.
+
+        karakterHP = 100;
+        deger = karakterHP; //deï¿½eri hp ye atadï¿½k.
+        bloodFrame.gameObject.SetActive(false);
+       
         
     }
 
     void Update()
     {
-        hpInt = Mathf.RoundToInt(karakterHP);  //karakter hp yi ilgili deðiþken çevirerek atadýk.
+        hpInt = Mathf.RoundToInt(karakterHP);  //karakter hp yi ilgili deï¿½iï¿½ken ï¿½evirerek atadï¿½k.
 
-        if (deger != karakterHP&&karakterHP>0)  //Bu kýsýmda, karakterin caný, deðer deðiþkenine atandýktan sonra canda deðiþim olup olmadýðýný kontrol ediyor. Eðer deðiþim varsa bloodFrame effect devreye girecek.
+        if (deger != karakterHP&&karakterHP>0)  //Bu kï¿½sï¿½mda, karakterin canï¿½, deï¿½er deï¿½iï¿½kenine atandï¿½ktan sonra canda deï¿½iï¿½im olup olmadï¿½ï¿½ï¿½nï¿½ kontrol ediyor. Eï¿½er deï¿½iï¿½im varsa bloodFrame effect devreye girecek.
         {
             float degerIki = deger;
             tetiklendiMi = true;
@@ -113,7 +118,7 @@ public class KarakterAnimasyonController : MonoBehaviour
             if (degerIki != deger)
             {
                 StopCoroutine(renkGecisi());
-                //StartCoroutine(renkGecisi());
+                StartCoroutine(renkGecisi());
             }
             
         }
@@ -122,6 +127,7 @@ public class KarakterAnimasyonController : MonoBehaviour
         {
             Karakter.SetActive(false);
             hpText.text = "0";
+            OlumEkrani.Olum(); //--
         }
 
         
@@ -129,16 +135,16 @@ public class KarakterAnimasyonController : MonoBehaviour
         else
         {
             hpText.text =hpInt.ToString();
-            if (Input.GetMouseButtonDown(0) && elindeSilahVar == true && atesLimiti > 0) //14.atanan tuþa basýldýðýnda ve karakterin elinde silah varsa ateþ etme fonksiyonu çalýþýr.
+            if (Input.GetMouseButtonDown(0) && elindeSilahVar == true && atesLimiti > 0 && !(PauseMenu.oyunDurduMu)) //14.atanan tuï¿½a basï¿½ldï¿½ï¿½ï¿½nda ve karakterin elinde silah varsa ateï¿½ etme fonksiyonu ï¿½alï¿½ï¿½ï¿½r.
             {
-                if (Time.time - sonTiklama > tiklamaBeklemeSuresi) //19. Bekleme süresi ve ateþ etme limitini burada kullandýk.
+                if (Time.time - sonTiklama > tiklamaBeklemeSuresi) //19. Bekleme sï¿½resi ve ateï¿½ etme limitini burada kullandï¿½k.
                 {
                     AtesEtme();
 
-                    //ateþ edildiðinde hasar verme sistemi daha sonra burada kullanýlacak.
+                    //ateï¿½ edildiï¿½inde hasar verme sistemi daha sonra burada kullanï¿½lacak.
                     sonTiklama = Time.time;
 
-                    switch (atesLimiti) //Ateþ ettikçe mermi sayýsýný gösteren sembollerin ekrandan silinmesini saðlayacak yapý.
+                    switch (atesLimiti) //Ateï¿½ ettikï¿½e mermi sayï¿½sï¿½nï¿½ gï¿½steren sembollerin ekrandan silinmesini saï¿½layacak yapï¿½.
                     {
                         case 6:
                             mermiBir.SetActive(false);
@@ -165,14 +171,14 @@ public class KarakterAnimasyonController : MonoBehaviour
                 }
             }
 
-            //ateþ etme limiti dolduðunda silahýn boþ olduðunu anlayacaðýmýz ses efekti burada bir if açýlarak yapýlacak.
+            //ateï¿½ etme limiti dolduï¿½unda silahï¿½n boï¿½ olduï¿½unu anlayacaï¿½ï¿½mï¿½z ses efekti burada bir if aï¿½ï¿½larak yapï¿½lacak.
 
-            else //15.eðer 14.maddedeki þartlar saðlanmýyorsa ateþ etme animasyonunun durmasý saðlanýr.
+            else //15.eï¿½er 14.maddedeki ï¿½artlar saï¿½lanmï¿½yorsa ateï¿½ etme animasyonunun durmasï¿½ saï¿½lanï¿½r.
             {
                 anim.SetBool("atesEdiyorMu", false);
             }
 
-            if (Input.GetMouseButtonDown(0) && elindeKameraVar == true && fotografLimiti > 0) //14.1 atanan tuþa basýldýðýnda ve karakterin elinde kamera varsa fotoðraf çekme fonksiyonu çalýþýr.
+            if (Input.GetMouseButtonDown(0) && elindeKameraVar == true && fotografLimiti > 0 && !(PauseMenu.oyunDurduMu)) //14.1 atanan tuï¿½a basï¿½ldï¿½ï¿½ï¿½nda ve karakterin elinde kamera varsa fotoï¿½raf ï¿½ekme fonksiyonu ï¿½alï¿½ï¿½ï¿½r.
             {
                 if (Time.time - sonTiklama > tiklamaBeklemeSuresi)
                 {
@@ -181,23 +187,23 @@ public class KarakterAnimasyonController : MonoBehaviour
                     sonTiklama = Time.time;
                 }
 
-                //--fotoðraf çekildiðinde fotoðraflarýn depolamada kaydedilmesi ve fotoðraf çekilme sýrasýnda raycast yöntemiyle sorgulamanýn yapýlmasý iþlemleri buraya gelicek.
+                //--fotoï¿½raf ï¿½ekildiï¿½inde fotoï¿½raflarï¿½n depolamada kaydedilmesi ve fotoï¿½raf ï¿½ekilme sï¿½rasï¿½nda raycast yï¿½ntemiyle sorgulamanï¿½n yapï¿½lmasï¿½ iï¿½lemleri buraya gelicek.
             }
-            //Fotoðraf çekme limiti dolduðunda kullanýcýnýn anlamasýný saðlayacak ses efekti burada çalacak.
+            //Fotoï¿½raf ï¿½ekme limiti dolduï¿½unda kullanï¿½cï¿½nï¿½n anlamasï¿½nï¿½ saï¿½layacak ses efekti burada ï¿½alacak.
 
-            else //15.1 eðer 14.1.maddedeki þartlar saðlanmýyorsa fotoðraf çekme animasyonunun durmasý saðlanýr.
+            else //15.1 eï¿½er 14.1.maddedeki ï¿½artlar saï¿½lanmï¿½yorsa fotoï¿½raf ï¿½ekme animasyonunun durmasï¿½ saï¿½lanï¿½r.
             {
                 anim.SetBool("fotoCekiyorMu", false);
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha3) && elindeSilahVar == true) //13.atadýðýmýz tuþa basýldýðýnda karakter silahý býrakýp kamerayý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
+            if (Input.GetKeyDown(KeyCode.Alpha3) && elindeSilahVar == true) //13.atadï¿½ï¿½ï¿½mï¿½z tuï¿½a basï¿½ldï¿½ï¿½ï¿½nda karakter silahï¿½ bï¿½rakï¿½p kamerayï¿½ alï¿½r. 4 ve 5. maddedeki deï¿½iï¿½kenlere olmasï¿½ gereken deï¿½erler atandï¿½. 
             {
                 elindeKameraVar = true;
                 elindeSilahVar = false;
-                SilahiBirakipKamerayýTutma();
+                SilahiBirakipKamerayï¿½Tutma();
                
                 mermiBirIM.color = deaktifColor;
-                mermiIkýIM.color = deaktifColor;
+                mermiIkï¿½IM.color = deaktifColor;
                 mermiUcIM.color = deaktifColor;
                 mermiDortIM.color = deaktifColor;
                 mermiBesIM.color = deaktifColor;
@@ -209,7 +215,7 @@ public class KarakterAnimasyonController : MonoBehaviour
                 StartCoroutine(CrossPistolToCamera());
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2) && elindeKameraVar == true) //13.1 atadýðýmýz tuþa basýldýðýnda karakter kamerayý býrakýp silahý alýr. 4 ve 5. maddedeki deðiþkenlere olmasý gereken deðerler atandý. 
+            if (Input.GetKeyDown(KeyCode.Alpha2) && elindeKameraVar == true) //13.1 atadï¿½ï¿½ï¿½mï¿½z tuï¿½a basï¿½ldï¿½ï¿½ï¿½nda karakter kamerayï¿½ bï¿½rakï¿½p silahï¿½ alï¿½r. 4 ve 5. maddedeki deï¿½iï¿½kenlere olmasï¿½ gereken deï¿½erler atandï¿½. 
             {
                 elindeSilahVar = true;
                 elindeKameraVar = false;
@@ -217,7 +223,7 @@ public class KarakterAnimasyonController : MonoBehaviour
                
 
                 mermiBirIM.color = aktifColor;
-                mermiIkýIM.color = aktifColor;
+                mermiIkï¿½IM.color = aktifColor;
                 mermiUcIM.color = aktifColor;
                 mermiDortIM.color = aktifColor;
                 mermiBesIM.color = aktifColor;
@@ -239,7 +245,7 @@ public class KarakterAnimasyonController : MonoBehaviour
     public void HasarAl()
     {
         karakterHP -= Random.Range(10f, 20f);
-        //audioSource.PlayOneShot(yaralanma); //karakter hasar aldýðýnda çýkacak sesin oynatýlmasý saðlandý.
+        //audioSource.PlayOneShot(yaralanma); //karakter hasar aldï¿½ï¿½ï¿½nda ï¿½ï¿½kacak sesin oynatï¿½lmasï¿½ saï¿½landï¿½.
         yaralanmaSesi();
         
     }
@@ -247,7 +253,7 @@ public class KarakterAnimasyonController : MonoBehaviour
     {
         
         karakterHP -= Random.Range(5f, 10f);
-        //audioSource.PlayOneShot(yaralanma); //karakter hasar aldýðýnda çýkacak sesin oynatýlmasý saðlandý.
+        //audioSource.PlayOneShot(yaralanma); //karakter hasar aldï¿½ï¿½ï¿½nda ï¿½ï¿½kacak sesin oynatï¿½lmasï¿½ saï¿½landï¿½.
         if (lightAttackSayisi == 0 || lightAttackSayisi % 2 == 0) 
         { 
             yaralanmaSesiLight();
@@ -255,21 +261,21 @@ public class KarakterAnimasyonController : MonoBehaviour
         lightAttackSayisi++;
     }
 
-    void SilahiBirakipKamerayýTutma()  //6.karakterin elindeki silahý býrakýp kamerayý aldýðý sýrada gerçekleþecek olan animasyon ve iþlemleri gerçekleþtirecek fonksiyon.
+    void SilahiBirakipKamerayï¿½Tutma()  //6.karakterin elindeki silahï¿½ bï¿½rakï¿½p kamerayï¿½ aldï¿½ï¿½ï¿½ sï¿½rada gerï¿½ekleï¿½ecek olan animasyon ve iï¿½lemleri gerï¿½ekleï¿½tirecek fonksiyon.
     {
         anim.SetTrigger("silahTutarkenBirakma");
-        StartCoroutine(KameraAlmaBekletme()); //7.bu yapýyý kullanma sebebimiz nesne görünürlüklerinin animasyonlardan önce çalýþmasýndan dolayý oluþan çarpýk görüntünün önüne geçmek.
+        StartCoroutine(KameraAlmaBekletme()); //7.bu yapï¿½yï¿½ kullanma sebebimiz nesne gï¿½rï¿½nï¿½rlï¿½klerinin animasyonlardan ï¿½nce ï¿½alï¿½ï¿½masï¿½ndan dolayï¿½ oluï¿½an ï¿½arpï¿½k gï¿½rï¿½ntï¿½nï¿½n ï¿½nï¿½ne geï¿½mek.
         anim.SetTrigger("silahBirakirkenKameraAlma");
         StartCoroutine(kameraCekmeSesi());
         anim.SetTrigger("kameraAlirkenTutma");
     }
 
-    void FotoCekme()  //8.karakterin fotoðraf çekme animasyonunu gerçekleþtiren fonksiyon.
+    void FotoCekme()  //8.karakterin fotoï¿½raf ï¿½ekme animasyonunu gerï¿½ekleï¿½tiren fonksiyon.
     {
         anim.SetBool("fotoCekiyorMu", true);
     }
 
-    void KamerayiBirakipSilahTutma() //9.karakterin elindeki kamerayý býrakýp silahý aldýðý sýrada gerçekleþecek olan animasyon ve iþlemleri gerçekleþtirecek fonksiyon.
+    void KamerayiBirakipSilahTutma() //9.karakterin elindeki kamerayï¿½ bï¿½rakï¿½p silahï¿½ aldï¿½ï¿½ï¿½ sï¿½rada gerï¿½ekleï¿½ecek olan animasyon ve iï¿½lemleri gerï¿½ekleï¿½tirecek fonksiyon.
     {
         anim.SetTrigger("kameraTutarkenBirakma");
         StartCoroutine(SilahAlmaBekletme());
@@ -278,12 +284,12 @@ public class KarakterAnimasyonController : MonoBehaviour
         anim.SetTrigger("silahAlirkenTutma");
     }
 
-    void AtesEtme() //10.karakterin ateþ etme animasyonunu gerçekleþtiren fonksiyon.
+    void AtesEtme() //10.karakterin ateï¿½ etme animasyonunu gerï¿½ekleï¿½tiren fonksiyon.
     {
         anim.SetBool("atesEdiyorMu", true);        
     }
 
-    IEnumerator SilahAlmaBekletme() //11.  7.maddedeki iþlemi gerçekleþtiren coroutine
+    IEnumerator SilahAlmaBekletme() //11.  7.maddedeki iï¿½lemi gerï¿½ekleï¿½tiren coroutine
     {
         yield return new WaitForSecondsRealtime(1f);
         pistol.SetActive(true);
@@ -346,25 +352,25 @@ public class KarakterAnimasyonController : MonoBehaviour
             
         }
     }
-    void yaralanmaSesiLight() //Karakter attack1 yedikten sonra çalacak ses efekti.
+    void yaralanmaSesiLight() //Karakter attack1 yedikten sonra ï¿½alacak ses efekti.
     {
 
         audioSource.PlayOneShot(yaralanma[0]);
 
     }
-    void yaralanmaSesi() //karakterin attack2 yedikten sonra çalacak ses efekti
+    void yaralanmaSesi() //karakterin attack2 yedikten sonra ï¿½alacak ses efekti
     {
         
         audioSource.PlayOneShot(yaralanma[1]);
         
     }
     
-    IEnumerator silahCekmeSesi() //karakterin kamerayý býrakýp silahý alýrken çalacak ses efekti
+    IEnumerator silahCekmeSesi() //karakterin kamerayï¿½ bï¿½rakï¿½p silahï¿½ alï¿½rken ï¿½alacak ses efekti
     {
         yield return new WaitForSecondsRealtime(0.8f);
-        audioSource.PlayOneShot(silahAl); //silahý alýrken çýkan sesin oynatýlmasý saðlandý.
+        audioSource.PlayOneShot(silahAl); //silahï¿½ alï¿½rken ï¿½ï¿½kan sesin oynatï¿½lmasï¿½ saï¿½landï¿½.
     }
-    IEnumerator kameraCekmeSesi()// karakterin silahý býrakýp kamerayý alýrken çalacak ses efekti
+    IEnumerator kameraCekmeSesi()// karakterin silahï¿½ bï¿½rakï¿½p kamerayï¿½ alï¿½rken ï¿½alacak ses efekti
     {
         yield return new WaitForSecondsRealtime(0.7f);
         audioSource.PlayOneShot(kameraCekme);
