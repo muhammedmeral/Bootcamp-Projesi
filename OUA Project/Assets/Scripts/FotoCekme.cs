@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FotoCekme : MonoBehaviour
 {
     public Camera fotoCekmeKamerasi;
-    public List<RawImage> fotoGostericiler; // Birden fazla Raw Image i�in liste tan�mlad�k
+    /*public List<RawImage> fotoGostericiler; */// Birden fazla Raw Image i�in liste tan�mlad�k
     private List<Texture2D> fotoTextureList;
     int fotoCekmeLimiti = 3;
 
@@ -21,30 +21,43 @@ public class FotoCekme : MonoBehaviour
     float sonTiklama;
     float tiklamaBeklemeSuresi = 0.65f;
 
-    
+
     private void Start()
     {
+        SifirlaFotoKayitlari();
         fotoTextureList = new List<Texture2D>();
         audioSource = GetComponent<AudioSource>(); //audiosource componentini cache ettik.
     }
 
     private void Update()
     {
-        
-        if (Input.GetMouseButtonDown(0) && fotoCekmeLimiti > 0)
+
+        if (Input.GetMouseButtonDown(0) && fotoCekmeLimiti > 0 && PauseMenu.oyunDurduMu == false)
         {
             if (Time.time - sonTiklama > tiklamaBeklemeSuresi)
             {
                 CanavariFotoCek();
                 audioSource.PlayOneShot(fotoCek); //foto�raf �ekme sesinin oynat�lmas� sa�land�.
 
-                Kaydet();
+                //Kaydet();
                 fotoCekmeLimiti--;
                 sonTiklama = Time.time;
+
+                if (KadrajdaMi() == true)
+                {
+                    Kaydet();
+                    fotoCekmeLimiti = 0;
+                }
+
+                else
+                {
+                    //fotoCekmeLimiti--;
+                    sonTiklama = Time.time;
+                }
             }
-            
+
         }
-        else if (Input.GetMouseButtonDown(0) && fotoCekmeLimiti <= 0)
+        else if (Input.GetMouseButtonDown(0) && fotoCekmeLimiti <= 0 && PauseMenu.oyunDurduMu == false)
         {
             if (fotoCekmeLimiti == 0)
             {
@@ -58,15 +71,15 @@ public class FotoCekme : MonoBehaviour
                 //�alacak ses eklenecek
 
                 if (audioSource.isPlaying == false)
-                { 
+                {
                     BosKameraSesi();
                 }
-                
+
                 sonTiklama = Time.time;
             }
         }
 
-        TumFotograflariGoster();
+        //TumFotograflariGoster();
     }
 
 
@@ -87,20 +100,21 @@ public class FotoCekme : MonoBehaviour
 
     public void CanavariFotoCek()
     {
-        RenderTexture renderTexture = new RenderTexture(Screen.width, Screen.height, 24);
-        fotoCekmeKamerasi.targetTexture = renderTexture;
-        Texture2D fotoTexture2D = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
-        fotoCekmeKamerasi.Render();
-        RenderTexture.active = renderTexture;
-        fotoTexture2D.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-        fotoTexture2D.Apply();
-        fotoCekmeKamerasi.targetTexture = null;
-        RenderTexture.active = null;
-        Destroy(renderTexture);
 
-        fotoTextureList.Add(fotoTexture2D);  //dasdadasdasdasdasd
         if (KadrajdaMi() == true)
         {
+            RenderTexture renderTexture = new RenderTexture(Screen.width, Screen.height, 24);
+            fotoCekmeKamerasi.targetTexture = renderTexture;
+            Texture2D fotoTexture2D = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
+            fotoCekmeKamerasi.Render();
+            RenderTexture.active = renderTexture;
+            fotoTexture2D.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+            fotoTexture2D.Apply();
+            fotoCekmeKamerasi.targetTexture = null;
+            RenderTexture.active = null;
+            Destroy(renderTexture);
+
+            fotoTextureList.Add(fotoTexture2D);  //dasdadasdasdasdasd
             Debug.Log("Canaver kadrajdaydi len efferin");
         }
         else
@@ -109,18 +123,18 @@ public class FotoCekme : MonoBehaviour
         }
     }
 
-    public void TumFotograflariGoster()   //Bu k�s�m aray�z i�inden sonra silinecek.
-    {
-        for (int i = 0; i < fotoTextureList.Count; i++)
-        {
-            if (i < fotoGostericiler.Count)
-            {
-                RawImage fotoGosterici = fotoGostericiler[i];
-                Texture2D fotoTexture = fotoTextureList[i];
-                fotoGosterici.texture = fotoTexture;
-            }
-        }
-    }
+    //public void TumFotograflariGoster()   //Bu k�s�m aray�z i�inden sonra silinecek.
+    //{
+    //    for (int i = 0; i < fotoTextureList.Count; i++)
+    //    {
+    //        if (i < fotoGostericiler.Count)
+    //        {
+    //            RawImage fotoGosterici = fotoGostericiler[i];
+    //            Texture2D fotoTexture = fotoTextureList[i];
+    //            fotoGosterici.texture = fotoTexture;
+    //        }
+    //    }
+    //}
 
     public void Kaydet()
     {
@@ -139,11 +153,22 @@ public class FotoCekme : MonoBehaviour
     public static Texture2D FotoyuYukle(string dosyaYolu)
     {
         byte[] fotoBytes = System.IO.File.ReadAllBytes(dosyaYolu);
-        Texture2D yuklenenFoto = new Texture2D(2,2); // Y�klenen foto�raf�n boyutunu belirleyin.
+        Texture2D yuklenenFoto = new Texture2D(2, 2); // Y�klenen foto�raf�n boyutunu belirleyin.
         yuklenenFoto.LoadImage(fotoBytes);
         return yuklenenFoto;
     }
 
+    private void SifirlaFotoKayitlari()
+    {
+        for (int i = 0; i < fotoCekmeLimiti; i++)
+        {
+            string dosyaYolu = Application.persistentDataPath + "/foto" + (i + 1) + ".png";
+            if (System.IO.File.Exists(dosyaYolu))
+            {
+                System.IO.File.Delete(dosyaYolu);
+            }
+        }
+    }
 
 
 }

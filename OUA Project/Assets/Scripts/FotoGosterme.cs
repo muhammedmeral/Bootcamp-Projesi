@@ -6,16 +6,30 @@ using UnityEngine.UI;
 public class FotoGosterme : MonoBehaviour
 {
     public RawImage gosterici; // Foto�raf� g�sterece�iniz nesne i�in referans.
-
+    private FotoCekme fotoCekme;
+    public Image fotoCerceve;
     private void Start()
     {
-        // �kinci sahnede foto�raf� y�kleyin.
-        Texture2D yuklenenFoto = FotoCekme.FotoyuYukle(Application.persistentDataPath + "/foto1.png");
+        
+        fotoCekme = FindObjectOfType<FotoCekme>();
+        fotoCerceve.gameObject.SetActive(false);
+        gosterici.gameObject.SetActive(false);
+        Debug.Log("start");
 
-        // Foto�raf� g�sterece�iniz nesneye atay�n.
-        gosterici.texture = yuklenenFoto;
+       
+    }
+    private void Update()
+    {
+        if (fotoCekme != null )
+        {
+            Debug.Log("foto");
+            gosterici.gameObject.SetActive(true);
+            fotoCerceve.gameObject.SetActive(true);
+            Texture2D yuklenenFoto = FotoCekme.FotoyuYukle(Application.persistentDataPath + "/foto1.png");
+            gosterici.texture = yuklenenFoto;
+        }
     }
 }
 
 
- 
+

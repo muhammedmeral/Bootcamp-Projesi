@@ -885,6 +885,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gosterici: {fileID: 491676034}
+  fotoCekme: {fileID: 0}
+  fotoCerceve: {fileID: 247409578}
 --- !u!4 &1741384136
 Transform:
   m_ObjectHideFlags: 0

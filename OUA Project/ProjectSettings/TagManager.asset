@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - duvar
   - bloodFrame
+  - handcam
   layers:
   - Default
   - TransparentFX

@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/menu.unity
     guid: 19d9e5b857326d04a9feb4ec6521c068
   - enabled: 1
-    path: Assets/Scenes/Level 1.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
     path: Assets/Scenes/olum.unity
     guid: 3bd6568cb04822343a79972c3f43b4ad
   - enabled: 1
@@ -23,13 +20,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/fotoEkrani.unity
     guid: 3ca59ac9cbf25e644aaeb7b1a79b5c15
-  - enabled: 0
-    path: Assets/Scenes/Standard.unity
-    guid: 50ea1faee77725f4589c4c6f46cfb5b2
   - enabled: 1
-    path: Assets/Scenes/Level 1.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Scenes(Bilal)/Level_2(Bilal).unity
+    guid: c6826bfe932e1624fa66535e5b53e19f
+  - enabled: 1
+    path: Assets/Scenes/Scenes(Bilal)/Level_1(Bilal).unity
+    guid: beeb83f8c4f166145accffe9fb419a89
+  - enabled: 1
+    path: Assets/Scenes/Scenes(Bilal)/Level_3(Bilal).unity
+    guid: d18a0df0d2dbf7945848504a0122ca02
+  - enabled: 1
+    path: Assets/Scenes/loseEkran.unity
+    guid: 167de374ad1ebce4cbdea0346e90d923
   m_configObjects: {}

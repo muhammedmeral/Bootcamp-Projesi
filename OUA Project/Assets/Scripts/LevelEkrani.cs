@@ -9,18 +9,18 @@ public class LevelEkrani : MonoBehaviour
    
     public void level1()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene(5);
        
     }
 
     public void level2()
     {
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene(6);
     }
 
     public void level3()
     {
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene(7);
     }
 
     public void geriDon()

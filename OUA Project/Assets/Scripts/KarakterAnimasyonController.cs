@@ -36,7 +36,7 @@ public class KarakterAnimasyonController : MonoBehaviour
     
 
     private Image mermiBirIM; //Kamera ald���nda ve tekrar silah ald���nda mermi simgelerinin renklerinin de�i�mesini istedi�imiz i�in kullanaca��m�z component.
-    private Image mermiIk�IM;
+    private Image mermiIkiIM;
     private Image mermiUcIM;
     private Image mermiDortIM;
     private Image mermiBesIM;
@@ -72,7 +72,7 @@ public class KarakterAnimasyonController : MonoBehaviour
         elindeKameraVar = false; //12.2 ba�lang��ta olmas�n� istedi�imiz durumlar� sa�lamak i�in(elinde silah olmas�, silah�n g�r�n�r olmas� vs.) atad���m�z de�erler                                 
 
         mermiBirIM=mermiBir.GetComponent<Image>(); //componentleri cache ettik.
-        mermiIk�IM = mermiIki.GetComponent<Image>();
+        mermiIkiIM = mermiIki.GetComponent<Image>();
         mermiUcIM = mermiUc.GetComponent<Image>();
         mermiDortIM = mermiDort.GetComponent<Image>();
         mermiBesIM = mermiBes.GetComponent<Image>();
@@ -80,7 +80,7 @@ public class KarakterAnimasyonController : MonoBehaviour
 
 
         mermiBirIM.color = aktifColor;  //aray�zdeki unsurlar�n ba�lang��taki renklerini verdik.
-        mermiIk�IM.color = aktifColor;
+        mermiIkiIM.color = aktifColor;
         mermiUcIM.color=   aktifColor;
         mermiDortIM.color= aktifColor;
         mermiBesIM.color=  aktifColor;
@@ -200,10 +200,10 @@ public class KarakterAnimasyonController : MonoBehaviour
             {
                 elindeKameraVar = true;
                 elindeSilahVar = false;
-                SilahiBirakipKameray�Tutma();
+                SilahiBirakipKamerayiTutma();
                
                 mermiBirIM.color = deaktifColor;
-                mermiIk�IM.color = deaktifColor;
+                mermiIkiIM.color = deaktifColor;
                 mermiUcIM.color = deaktifColor;
                 mermiDortIM.color = deaktifColor;
                 mermiBesIM.color = deaktifColor;
@@ -223,7 +223,7 @@ public class KarakterAnimasyonController : MonoBehaviour
                
 
                 mermiBirIM.color = aktifColor;
-                mermiIk�IM.color = aktifColor;
+                mermiIkiIM.color = aktifColor;
                 mermiUcIM.color = aktifColor;
                 mermiDortIM.color = aktifColor;
                 mermiBesIM.color = aktifColor;
@@ -261,7 +261,7 @@ public class KarakterAnimasyonController : MonoBehaviour
         lightAttackSayisi++;
     }
 
-    void SilahiBirakipKameray�Tutma()  //6.karakterin elindeki silah� b�rak�p kameray� ald��� s�rada ger�ekle�ecek olan animasyon ve i�lemleri ger�ekle�tirecek fonksiyon.
+    void SilahiBirakipKamerayiTutma()  //6.karakterin elindeki silah� b�rak�p kameray� ald��� s�rada ger�ekle�ecek olan animasyon ve i�lemleri ger�ekle�tirecek fonksiyon.
     {
         anim.SetTrigger("silahTutarkenBirakma");
         StartCoroutine(KameraAlmaBekletme()); //7.bu yap�y� kullanma sebebimiz nesne g�r�n�rl�klerinin animasyonlardan �nce �al��mas�ndan dolay� olu�an �arp�k g�r�nt�n�n �n�ne ge�mek.

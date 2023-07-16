@@ -33,7 +33,7 @@ public class AtesSistemi : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && atesSiniri > 0) //2. Bu kýsýmda mouseye týkladýðýmýzda ekranda çýkacak particle effectleri kontrol edeceðiz.
+        if (Input.GetMouseButtonDown(0) && atesSiniri > 0 && PauseMenu.oyunDurduMu==false) //2. Bu kýsýmda mouseye týkladýðýmýzda ekranda çýkacak particle effectleri kontrol edeceðiz.
         {
             if (atesSiniri == 6)
             {
@@ -49,7 +49,7 @@ public class AtesSistemi : MonoBehaviour
                 sonTiklama = Time.time; //10. Son týklama zamaný ile ilgili deðiþkeni güncelliyoruz.
             }
         }
-        else if (Input.GetMouseButtonDown(0) && atesSiniri <= 0)
+        else if (Input.GetMouseButtonDown(0) && atesSiniri <= 0 && PauseMenu.oyunDurduMu == false)
         {
             if (atesSiniri == 0)
             {
