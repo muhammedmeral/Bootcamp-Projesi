@@ -98,3 +98,30 @@
 <li>UI Tasarımlarının alternatifsiz olduğuna, bu nedenle daha fazla alternatif konseptin olması gerektiğine,</li>
 <li>&Uuml;yelerin g&ouml;revleri tamamlama hızının d&uuml;ş&uuml;k olduğuna, bu nedenle yardımlaşmanın artırılıp, zaman y&ouml;netiminin bireysel ve ekip olarak iyileştirilmesine karar verildi.</li>
 
+<h1>SPRINT 3</h1>
+<p><strong>Sprint Notları</strong>:<span>Toplantı notları ve puanlar backlogların itemlerin i&ccedil;ine yazılmıştır.</span></p>
+<p><strong>Sprint İ&ccedil;inde Tamamlaması Tahmin Edilen Puan:</strong> 690</p>
+<p><strong>Puanlama Mantığı:</strong><span>&nbsp;&Uuml;&ccedil;&uuml;nc&uuml; sprint i&ccedil;in toplamda 690 puanlık bir g&ouml;rev listesi bulunmaktadır. Kodlama işlerinin son sprinte kalmasından dolayı ağırlıklı olarak Unity ve kodlama tarafına &ouml;nem verilmiştir.</span></p>
+<p><span><strong>Daily Scrum:</strong> Daily toplantıları Whatsapp &uuml;zerinden yapılmıştır.</span></p>
+(https://github.com/muhammedmeral/Bootcamp-Projesi/files/12068601/Daily.Scrum.ile.WhatsApp.Sohbeti.txt)
+
+<p><strong>&Uuml;r&uuml;n Durumu:</strong> &Uuml;r&uuml;n&uuml;n genel olarak geliştirmesi bitirilse de, son dokunuşlar ve ayrıntılarda bazı eksiklikler mevcuttur.</p>
+https://trello.com/b/XkJ4eHDh/3sprint-yapilacaklar-li%CC%87stesi%CC%87
+![11](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/8d78cfd6-d6b3-49af-9e13-2a967cd3f1b5)
+![22](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/8f01433b-f76d-4629-a7dd-62416bf73f6e)
+![33](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/80f99d4d-e2b3-479a-a4c3-bfc63b3b04c7)
+![44](https://github.com/muhammedmeral/Bootcamp-Projesi/assets/127206074/5fdd0a0b-b978-456a-b7fb-b37649d1cf57)
+
+<p></p>
+<h3>Sprint Review:</h3>
+<ul>
+<li>&Uuml;r&uuml;n&uuml;n genel mekanikleri yapılabildi.</li>
+<li>Ekip i&ccedil;indeki rol dağılımı d&uuml;zenli yapıldı.</li>
+<li>Yaşanılan zorlukların genel olarak &uuml;st&uuml;sinden gelinebildi.</li>
+</ul>
+<h3>Sprint Retrospective:</h3>
+<ul>
+<li>Ekip &uuml;yelerinin ayırdığı zaman yeterli değildi.</li>
+<li>Zaman y&ouml;netimi iyi değildi.</li>
+<li>Her &uuml;yeden projeye katkı&nbsp; olması gerektiği kadar alınamadı.</li>
+</ul>
