@@ -100,8 +100,8 @@
 
 <h1>SPRINT 3</h1>
 <p><strong>Sprint Notları</strong>:<span>Toplantı notları ve puanlar backlogların itemlerin i&ccedil;ine yazılmıştır.</span></p>
-<p><strong>Sprint İ&ccedil;inde Tamamlaması Tahmin Edilen Puan:</strong> 690</p>
-<p><strong>Puanlama Mantığı:</strong><span>&nbsp;&Uuml;&ccedil;&uuml;nc&uuml; sprint i&ccedil;in toplamda 690 puanlık bir g&ouml;rev listesi bulunmaktadır. Kodlama işlerinin son sprinte kalmasından dolayı ağırlıklı olarak Unity ve kodlama tarafına &ouml;nem verilmiştir.</span></p>
+<p><strong>Sprint İ&ccedil;inde Tamamlaması Tahmin Edilen Puan:</strong> 780</p>
+<p><strong>Puanlama Mantığı:</strong><span>&nbsp;&Uuml;&ccedil;&uuml;nc&uuml; sprint i&ccedil;in toplamda 780 puanlık bir g&ouml;rev listesi bulunmaktadır. Kodlama işlerinin son sprinte kalmasından dolayı ağırlıklı olarak Unity ve kodlama tarafına &ouml;nem verilmiştir.</span></p>
 <p><span><strong>Daily Scrum:</strong> Daily toplantıları Whatsapp &uuml;zerinden yapılmıştır.</span></p>
 (https://github.com/muhammedmeral/Bootcamp-Projesi/files/12068601/Daily.Scrum.ile.WhatsApp.Sohbeti.txt)
 
