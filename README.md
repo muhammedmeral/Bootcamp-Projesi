@@ -8,18 +8,17 @@
 <li>Bilal ŞAHİN: 3D Artist/Product Owner</li>
 <li>Pelin BURGU: 2D Artist/UI-UX Designer</li>
 <li>Tuğba UYSALAR: Developer</li>
-<li>S&uuml;meyye KORKMAZ: Devoloper</li>
 <li>Muhammed MERAL: Scrum Master/Developer</li>
 </ul>
 <p dir="auto"></p>
 <h2 dir="auto"><a id="user-content-&uuml;r&uuml;n-i̇smi" class="anchor" aria-hidden="true" href="https://github.com/muhammedmeral/Bootcamp-Projesi/edit/main/README.md#%C3%BCr%C3%BCn-i%CC%87smi"><svg class="octicon octicon-link" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><strong>&Uuml;r&uuml;n İsmi</strong></h2>
 <ul dir="auto">
-<li>Demon's House</li>
+<li>Maze of Demon</li>
 </ul>
 <p dir="auto"></p>
 <h2 dir="auto"><a id="user-content-&uuml;r&uuml;n-a&ccedil;ıklaması" class="anchor" aria-hidden="true" href="https://github.com/muhammedmeral/Bootcamp-Projesi/edit/main/README.md#%C3%BCr%C3%BCn-a%C3%A7%C4%B1klamas%C4%B1"><svg class="octicon octicon-link" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><strong>&Uuml;r&uuml;n A&ccedil;ıklaması</strong></h2>
 <ul dir="auto">
-<li>Demon's House, şeytani anomalilerin yaşandığı bir kasabada, olayların arkasındaki sebebini araştıran bir yetkiliyi canlandırdığımız birinci şahıs korku-aksiyon oyunudur.</li>
+<li>Maze of Demon, şeytani anomalilerin yaşandığı bir kasabada, olayların arkasındaki sebebini araştıran bir yetkiliyi canlandırdığımız birinci şahıs korku-aksiyon oyunudur.</li>
 </ul>
 <p dir="auto"></p>
 <h2 dir="auto"><a id="user-content-&uuml;r&uuml;n-&ouml;zellikleri" class="anchor" aria-hidden="true" href="https://github.com/muhammedmeral/Bootcamp-Projesi/edit/main/README.md#%C3%BCr%C3%BCn-%C3%B6zellikleri"><svg class="octicon octicon-link" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a><strong>&Uuml;r&uuml;n &Ouml;zellikleri</strong></h2>
